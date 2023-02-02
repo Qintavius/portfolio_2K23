@@ -1,0 +1,101 @@
+.career {
+  justify-content: end;
+  gap: 38px;
+  &::before {
+    content: "CAREER";
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    .sub-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0 60px;
+      gap: 10px;
+    }
+
+    .line {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 1px;
+      width: 60%;
+      margin-top: 20px;
+      background-color: #fff;
+      &::before {
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        rotate: 45deg;
+        background-color: #fff;
+      }
+
+      &.lf {
+        justify-content: end;
+        align-self: start;
+      }
+
+      &.rt {
+        justify-content: start;
+        align-self: end;
+      }
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    .date {
+      font-size: 14px;
+    }
+
+    .text {
+      font-size: 14px;
+    }
+
+    &.block-1 {
+      text-align: right;
+      &::before {
+        right: -30px;
+      }
+    }
+
+    &.block-2 {
+      text-align: left;
+      &::before {
+        left: -30px;
+      }
+    }
+
+    &.block-3 {
+      text-align: right;
+      &::before {
+        right: -30px;
+      }
+    }
+  }
+
+  .water-top {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin-top: 20px;
+    background-color: var(--water-surface-color);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(6, 140, 239, 0.8) 100%
+    );
+
+    .iceberg-top {
+      margin-bottom: 26px;
+      object-fit: cover;
+      object-position: -5px 0px;
+    }
+  }
+}

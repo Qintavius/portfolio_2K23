@@ -1,0 +1,27 @@
+.scroll-line {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 100;
+  .scroll-text {
+    position: absolute;
+    bottom: 83px;
+    left: 20px;
+    font-size: 14px;
+    font-weight: 400;
+    writing-mode: vertical-lr;
+    transform: rotate(180deg);
+    color: var(--scroll-line);
+    z-index: 10;
+    &::before {
+      content: "";
+      position: absolute;
+      width: 1px;
+      height: 74px;
+      background-color: var(--scroll-line);
+      bottom: 45px;
+      left: 3px;
+    }
+  }
+}

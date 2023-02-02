@@ -1,0 +1,32 @@
+.project {
+  background-color: var(--water-deep-color);
+  &::before {
+    content: "PROJECT";
+    top: -8px;
+  }
+
+  .project-list {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    ul {
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+      height: 50%;
+      li {
+        font-size: 16px;
+        font-weight: 600;
+        text-align: center;
+
+        .phonetic {
+          font-size: 14px;
+          font-weight: 400;
+        }
+      }
+    }
+  }
+}
