@@ -1,0 +1,208 @@
+@import "../styles/mixins.scss";
+
+.career {
+  justify-content: flex-start;
+  gap: 30px;
+  padding-top: 30px;
+  @include desktop {
+    justify-content: center;
+    align-items: center;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 100px;
+      width: 50px;
+      height: 100%;
+      background-color: var(--layout-text);
+    }
+  }
+  &::before {
+    content: "CAREER";
+    top: -8px;
+    transform: translateX(-100%);
+    transition: all 1s;
+  }
+  &--show:before {
+    transform: translateX(0);
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    @include desktop {
+      position: absolute;
+      bottom: 0px;
+      opacity: 0;
+      visibility: hidden;
+      width: 300px;
+      overflow: hidden;
+      transition: 0.5s;
+      z-index: -1;
+      &--show {
+        bottom: 150px;
+        opacity: 1;
+        visibility: visible;
+      }
+    }
+
+    .sub-container {
+      display: flex;
+      flex-direction: column;
+      padding: 0 30px;
+      gap: 10px;
+      opacity: 0;
+      transform: translateY(30px);
+      filter: blur(5px);
+      transition: all 1s;
+      transition-delay: 0.5s;
+      &--show {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+        @include desktop {
+          transform: translateY(0);
+        }
+      }
+    }
+
+    .line {
+      display: flex;
+      position: relative;
+      align-items: center;
+      height: 1px;
+      width: 60%;
+      margin-top: 20px;
+      background-color: var(--text-content);
+      &::before {
+        content: "";
+        position: absolute;
+        width: 7px;
+        height: 7px;
+        rotate: 45deg;
+        background-color: var(--text-content);
+      }
+      @include desktop {
+        display: none;
+      }
+
+      &.lt {
+        justify-content: end;
+        align-self: start;
+        transform: translateX(-100vw);
+        transition: all 0.6s;
+        &--show {
+          transform: translateX(0);
+        }
+      }
+
+      &.rt {
+        justify-content: start;
+        align-self: end;
+        transform: translateX(100vw);
+        transition: all 0.8s;
+        &--show {
+          transform: translateX(0);
+        }
+      }
+    }
+
+    h2 {
+      text-transform: uppercase;
+      font-size: 16px;
+    }
+
+    .date {
+      font-size: 14px;
+    }
+
+    .text {
+      font-size: 14px;
+      line-height: 160%;
+    }
+
+    &.block-1 {
+      text-align: right;
+      @include desktop {
+        height: 220px;
+        transform: translate(-180px, -300px);
+        border-right: 1.5px solid #fff;
+        & > .sub-container {
+          transform: translateY(0) translateX(100%);
+          &--show {
+            transform: translateY(0) translateX(0);
+          }
+        }
+      }
+      &::before {
+        right: -30px;
+      }
+    }
+
+    &.block-2 {
+      text-align: left;
+      @include desktop {
+        height: 245px;
+        border-left: 1.5px solid #fff;
+        transform: translate(350px, -120px);
+        & > .sub-container {
+          transform: translateY(0) translateX(-100%);
+          &--show {
+            transform: translateY(0) translateX(0);
+          }
+        }
+      }
+      &::before {
+        left: -30px;
+      }
+    }
+
+    &.block-3 {
+      text-align: right;
+      @include desktop {
+        height: 190px;
+        transform: translate(-350px, -90px);
+        border-right: 1.5px solid #fff;
+        & > .sub-container {
+          transform: translateY(0) translateX(100%);
+          &--show {
+            transform: translateY(0) translateX(0);
+          }
+        }
+      }
+      &::before {
+        right: -30px;
+      }
+    }
+  }
+
+  .water-top {
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    bottom: 0;
+    background-color: var(--water-surface-color);
+    background: linear-gradient(
+      180deg,
+      rgba(0, 0, 0, 0) 40%,
+      rgba(6, 140, 239, 0.8) 100%
+    );
+    z-index: -1;
+
+    .iceberg-top {
+      width: 312px;
+      height: auto;
+      margin-bottom: 26px;
+      object-fit: contain;
+      object-position: -5px 0px;
+      animation: iceberg 7s ease-in-out infinite;
+      @include desktop {
+        max-width: 779px;
+        width: 100%;
+      }
+    }
+  }
+}

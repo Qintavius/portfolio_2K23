@@ -1,0 +1,95 @@
+@import "../styles/mixins.scss";
+
+.about {
+  padding: 30px;
+  align-items: center;
+  @include desktop {
+    flex-direction: row;
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      right: 100px;
+      width: 50px;
+      height: 40%;
+      background-color: var(--layout-text);
+    }
+  }
+  &::before {
+    content: "ABOUT";
+  }
+
+  .text-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 37px;
+    height: 100%;
+    width: 100%;
+    @include desktop {
+      max-width: 530px;
+    }
+    .text--var-1 {
+      width: 70%;
+      font-size: 37px;
+      font-weight: 700;
+      transform: translateY(-100vw);
+      transition: 1s 0.3s;
+      &--show {
+        transform: translateY(0);
+      }
+
+      .colorized {
+        color: var(--text);
+        transition: 0.3s 1.1s;
+        &--show {
+          color: var(--text-color);
+        }
+      }
+    }
+
+    .title {
+      width: 90%;
+      font-size: 24px;
+      font-weight: 500;
+      transform: translateX(-100vw);
+      transition: 0.3s 1s;
+      &--show {
+        transform: translateX(0);
+      }
+    }
+
+    .text--var-2 {
+      width: 90%;
+      font-size: 16px;
+      font-weight: 400;
+      opacity: 0;
+      transition: 0.7s 1.3s;
+      &--show {
+        opacity: 1;
+      }
+    }
+  }
+
+  .floe-container {
+    animation: floating 7s ease-in-out infinite;
+    @include desktop {
+      margin-top: 80px;
+    }
+
+    .floe {
+      position: relative;
+      width: 249px;
+      height: 123px;
+      margin-top: 36px;
+      filter: blur(4px);
+      transform: scale(0) translateX(50vw) translateY(-100px);
+      z-index: -1;
+      transition: all 1.8s;
+      &--show {
+        transform: scale(1) translateX(0) translateY(0);
+        filter: blur(0);
+      }
+    }
+  }
+}
