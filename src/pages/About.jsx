@@ -26,8 +26,8 @@ const About = () => {
         </h1>
         <p className={inView ? "text--var-2 text--var-2--show" : "text--var-2"}>
           Passioné par le monde numérique et le graphisme, je me suis tourné
-          vers le développement front-end après une formation de technicien
-          informatique et de développeur web.
+          vers le développement après une formation de technicien informatique
+          et de développeur web.
           <br />
           <br />
           Je pratique également la photographie de rue à mes heures perdues.
@@ -40,6 +40,7 @@ const About = () => {
           className={inView ? "floe floe--show" : "floe"}
         />
       </div>
+      <span className="inBefore"></span>
     </section>
   );
 };

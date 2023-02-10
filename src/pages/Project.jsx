@@ -34,6 +34,8 @@ const Project = () => {
         </div>
         <div className="display-mockup"></div>
       </div>
+
+      <span className="inBefore"></span>
     </section>
   );
 };
