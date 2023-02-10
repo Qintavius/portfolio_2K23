@@ -67,11 +67,12 @@ body {
     transition: all 1s;
     @include desktop {
       display: flex;
-      right: 0;
+      left: initial;
+      top: 0;
+      right: 200px;
       bottom: 0;
       font-size: 200px;
       writing-mode: horizontal-tb;
-      justify-content: center;
       align-items: center;
     }
   }
