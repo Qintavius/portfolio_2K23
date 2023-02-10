@@ -1,9 +1,9 @@
-import "../src/style.scss";
-import About from "./components/About";
-import Career from "./components/Career";
-import Project from "./components/Project";
-import Skill from "./components/Skill";
+import About from "./pages/About";
+import Career from "./pages/Career";
+import Skill from "./pages/Skill";
+import Project from "./pages/Project";
 import ScrollLine from "./components/ScrollLine";
+import "./styles/style.scss";
 
 function App() {
   return (
