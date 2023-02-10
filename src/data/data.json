@@ -1,0 +1,131 @@
+[
+    {
+        "title": "Booki",
+        "stack" : [
+            "Html",
+            "Css",
+            "Responsive",
+            "W3C",
+            "GitHub"
+        ],
+        "description" : "Intégration d'une maquette avec HTML et CSS seulement.",
+        "pictures" : [
+            "./img/booki.jpg",
+            "./img/booki-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/booki",
+        "website" : "https://qintavius.github.io/booki/"
+    },
+    {
+        "title": "Ohmyfood",
+        "stack" : [
+            "Figma",
+            "Html",
+            "Sass",
+            "Responsive",
+            "W3C",
+            "GitHub"
+        ],
+        "description" : "Réédition d'une maquette sous format jpeg avec Figma pour réliser un prototypage de l'application avant intégration.",
+        "pictures" : [
+            "./img/ohmyfood.jpg",
+            "./img/ohmyfood-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/ohmyfood",
+        "website" : "https://qintavius.github.io/ohmyfood/"
+    },
+    {
+        "title": "La panthère",
+        "stack" : [
+            "Bootstrap",
+            "Javascript",
+            "LightHouse",
+            "Wave",
+            "W3C",
+            "GitHub"
+        ],
+        "description" : "Audit du site d'une agence de web design puis optimisation du S.E.O et de l'accessibilité pour améliorer le référencement.",
+        "pictures" : [
+            "./img/panthere.jpg",
+            "./img/panthere-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/la-panthere",
+        "website" : "https://qintavius.github.io/la-panthere"
+    },
+    {
+        "title": "Kanap",
+        "stack" : [
+            "Node",
+            "Npm",
+            "API",
+            "Javascript",
+            "Html",
+            "Css",
+            "W3C",
+            "Responsive",
+            "GitHub"
+        ],
+        "description" : "Intégration d'une maquette d'un site dynamique de e-commerce avec Javascript.",
+        "pictures" : [
+            "./img/kanap.jpg",
+            "./img/kanap-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/kanap",
+        "website" : "https://github.com/Qintavius/kanap"
+    },
+    {
+        "title": "Kasa",
+        "stack" : [
+            "Node",
+            "Npm",
+            "API",
+            "React JS",
+            "Sass",
+            "Responsive",
+            "Figma",
+            "W3C",
+            "GitHub"
+        ],
+        "description" : "Intégration d'une application web de location immobilière avec React JS.",
+        "pictures" : [
+            "./img/kasa.jpg",
+            "./img/kasa-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/kasa",
+        "website" : "https://qintavius.github.io/kasa"
+    },
+    {
+        "title": "Portfolio",
+        "stack" : [
+            "React",
+            "Sass",
+            "Npm",
+            "Figma",
+            "GitHub"
+        ],
+        "description" : "Vous y êtes.",
+        "pictures" : "",
+        "repository" : "",
+        "website" : ""
+    },
+    {
+        "title": "BleaTalk",
+        "stack" : [
+            "Figma",
+            "React JS",
+            "Npm",
+            "Sass",
+            "Firebase",
+            "Firestore",
+            "PWA",
+            "Github"
+        ],
+        "description" : "Création d'une PWA de chat privé réalisé avec React JS pour le front et Firebase pour la partie back-end.",
+        "pictures" : [
+            "./img/bleatalk.jpg",
+            "./img/bleatalk-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/bleatalk",
+        "website" : "https://bleatalk.quentinquintavius.com/"
+    }
+]
