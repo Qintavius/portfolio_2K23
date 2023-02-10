@@ -1,0 +1,206 @@
+@import "../styles/mixins.scss";
+
+.container {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 0;
+  transition: all 0.3s ease-in-out;
+  @include desktop {
+    position: absolute;
+    flex-direction: row;
+    left: initial;
+    right: 0;
+    padding: 20px;
+    transform: translateX(100vw);
+    height: 100%;
+    overflow: hidden;
+  }
+  &--open {
+    height: 95vh;
+    z-index: 100;
+    @include desktop {
+      width: 80%;
+      height: 100%;
+      transform: translateX(0%);
+      z-index: 0;
+    }
+  }
+
+  .modal {
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+    background-color: var(--water-deep-color);
+    background: linear-gradient(
+      0deg,
+      rgb(0, 0, 0) 35%,
+      rgba(14, 76, 112, 1) 100%
+    );
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+    @include desktop {
+      padding: 0;
+      border-radius: 0;
+      background: transparent;
+    }
+
+    .modal-nav {
+      display: flex;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+      width: 100%;
+      height: 40px;
+      @include desktop {
+        justify-content: flex-end;
+      }
+
+      .close {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 40px;
+        height: 40px;
+        @include desktop {
+          display: none;
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          height: 3px;
+          width: 20px;
+          border-radius: 10px;
+          transform: rotate(45deg);
+          background-color: var(--text-content);
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          height: 3px;
+          width: 20px;
+          border-radius: 10px;
+          transform: rotate(-45deg);
+          background-color: var(--text-content);
+        }
+      }
+
+      .nav-tab {
+        display: flex;
+        align-items: center;
+        gap: 15px;
+
+        .more {
+          padding: 8px 12px;
+          border: none;
+          border-radius: 10px;
+          background-color: var(--more-color);
+          a {
+            color: white;
+            font-size: 12px;
+          }
+        }
+
+        .repository {
+          a {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 8px;
+            padding: 7px 12px;
+            border-radius: 10px;
+            font-size: 12px;
+            background-color: var(--repo-color);
+          }
+
+          i {
+            font-size: 16px;
+          }
+        }
+      }
+    }
+
+    .description {
+      margin: 20px 0 20px;
+      font-size: 14px;
+    }
+
+    .phone {
+      position: relative;
+      margin: 30px auto;
+      padding-bottom: 5px;
+      width: 274px;
+      height: 564px;
+      overflow: hidden;
+      @include desktop {
+        display: none;
+      }
+
+      img {
+        width: 100%;
+        object-fit: cover;
+      }
+
+      .screen {
+        position: absolute;
+        width: 242px;
+        height: 524px;
+        top: 15px;
+        left: 16px;
+        border-radius: 23px;
+        background-color: black;
+        overflow: scroll;
+        &::-webkit-scrollbar {
+          display: none;
+        }
+
+        img {
+          border-radius: 23px;
+          vertical-align: sub;
+        }
+      }
+    }
+
+    .laptop {
+      display: none;
+      @include desktop {
+        display: flex;
+        position: absolute;
+        justify-content: center;
+        margin: 20px auto;
+        bottom: 10px;
+        right: 0;
+        left: 0;
+        height: auto;
+        width: 500px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          object-fit: contain;
+        }
+
+        .screen-laptop {
+          position: absolute;
+          height: 237px;
+          width: 398px;
+          top: 15px;
+          background-color: black;
+          overflow: scroll;
+          &::-webkit-scrollbar {
+            display: none;
+          }
+
+          img {
+            width: 100%;
+            vertical-align: sub;
+            object-fit: cover;
+          }
+        }
+      }
+    }
+  }
+}

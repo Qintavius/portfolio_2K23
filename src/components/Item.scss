@@ -1,0 +1,12 @@
+@import "../styles/mixins.scss";
+
+.item {
+  .title {
+    @include desktop {
+      cursor: pointer;
+      &:hover {
+        text-decoration: line-through;
+      }
+    }
+  }
+}
