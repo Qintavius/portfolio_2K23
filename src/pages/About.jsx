@@ -12,9 +12,19 @@ const About = () => {
   return (
     <section
       ref={ref}
-      className={inView ? "wrapper about wrapper--show about" : "wrapper about"}
+      className={inView ? "wrapper about wrapper about--show" : "wrapper about"}
     >
       <div className="text-container">
+        <div className="social">
+          <a href="mailto:qtzaba@gmail.com" target="_blank">
+            <i className="fa-solid fa-envelope"></i>
+            <span className="mail">email</span>
+          </a>
+          <a href="https://www.linkedin.com/in/quentin-z4b4" target="_blank">
+            <i className="fa-brands fa-linkedin"></i>
+            <span className="lkdin">linkedin</span>
+          </a>
+        </div>
         <p className={inView ? "text--var-1 text--var-1--show" : "text--var-1"}>
           Je suis{" "}
           <span className={inView ? "colorized colorized--show" : "colorized"}>
@@ -40,7 +50,7 @@ const About = () => {
           className={inView ? "floe floe--show" : "floe"}
         />
       </div>
-      <span className="inBefore"></span>
+      <span className="line-inBefore"></span>
     </section>
   );
 };

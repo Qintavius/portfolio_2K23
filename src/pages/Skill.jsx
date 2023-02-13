@@ -14,7 +14,7 @@ const Skill = () => {
     "Npm",
     "InkScape",
     "Figma",
-    "GitHub",
+    "Git Bash",
   ];
 
   const { ref, inView } = useInView({
@@ -24,7 +24,7 @@ const Skill = () => {
   return (
     <section
       ref={ref}
-      className={inView ? "wrapper skill wrapper--show skill" : "wrapper skill"}
+      className={inView ? "wrapper skill wrapper skill--show" : "wrapper skill"}
     >
       <div className="deep-mask">
         <img

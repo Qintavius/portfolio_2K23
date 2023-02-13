@@ -22,9 +22,20 @@
     top: -8px;
     transform: translateX(-100%);
     transition: all 1s;
+    @include desktop {
+      transform: translateX(0);
+      transform: translateY(100%);
+    }
   }
   &--show:before {
     transform: translateX(0);
+    @include desktop {
+      top: initial;
+      right: initial;
+      left: initial;
+      bottom: initial;
+      transform: translateY(-50%);
+    }
   }
 
   .content {
