@@ -8,25 +8,44 @@
   left: 0;
   width: 100%;
   height: 0;
-  transition: all 0.3s ease-in-out;
+  border-radius: 25px;
+  transition: 0.5s ease;
+  z-index: 1;
+  overflow: hidden;
+  background: linear-gradient(
+    0deg,
+    rgb(0, 0, 0) 60%,
+    rgba(14, 76, 112, 1) 100%
+  );
+
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url(../img/noise.jpg);
+    width: 300%;
+    height: 300%;
+    left: -50%;
+    top: -100%;
+    animation: grain 8s steps(10) infinite;
+    opacity: 0.3;
+    z-index: -1;
+  }
   @include desktop {
     position: absolute;
-    flex-direction: row;
-    left: initial;
-    right: 0;
-    padding: 20px;
-    transform: translateX(100vw);
-    height: 100%;
-    overflow: hidden;
+    visibility: hidden;
+    opacity: 0;
+    filter: blur(10px);
+    transform: scale(0.4);
   }
   &--open {
-    height: 95vh;
+    height: 90vh;
     z-index: 100;
     @include desktop {
-      width: 80%;
+      visibility: visible;
+      opacity: 1;
       height: 100%;
-      transform: translateX(0%);
-      z-index: 0;
+      filter: blur(0);
+      transform: scale(1);
     }
   }
 
@@ -34,19 +53,6 @@
     width: 100%;
     height: 100%;
     padding: 20px;
-    background-color: var(--water-deep-color);
-    background: linear-gradient(
-      0deg,
-      rgb(0, 0, 0) 35%,
-      rgba(14, 76, 112, 1) 100%
-    );
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    @include desktop {
-      padding: 0;
-      border-radius: 0;
-      background: transparent;
-    }
 
     .modal-nav {
       display: flex;
@@ -54,9 +60,6 @@
       justify-content: space-between;
       width: 100%;
       height: 40px;
-      @include desktop {
-        justify-content: flex-end;
-      }
 
       .close {
         display: flex;
@@ -65,7 +68,11 @@
         width: 40px;
         height: 40px;
         @include desktop {
-          display: none;
+          cursor: pointer;
+          &:hover::after,
+          &:hover::before {
+            transform: scale(1.2);
+          }
         }
 
         &::before {
@@ -73,18 +80,18 @@
           position: absolute;
           height: 3px;
           width: 20px;
-          border-radius: 10px;
           transform: rotate(45deg);
           background-color: var(--text-content);
+          transition: 0.15s;
         }
         &::after {
           content: "";
           position: absolute;
           height: 3px;
           width: 20px;
-          border-radius: 10px;
           transform: rotate(-45deg);
           background-color: var(--text-content);
+          transition: 0.15s;
         }
       }
 
@@ -94,17 +101,19 @@
         gap: 15px;
 
         .more {
-          padding: 8px 12px;
+          background-color: transparent;
           border: none;
-          border-radius: 10px;
-          background-color: var(--more-color);
           a {
-            color: white;
-            font-size: 12px;
+            background-color: var(--more-color);
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 16px;
           }
         }
 
         .repository {
+          background-color: transparent;
+          border: none;
           a {
             display: flex;
             justify-content: center;
@@ -112,7 +121,7 @@
             gap: 8px;
             padding: 7px 12px;
             border-radius: 10px;
-            font-size: 12px;
+            font-size: 16px;
             background-color: var(--repo-color);
           }
 
@@ -125,15 +134,15 @@
 
     .description {
       margin: 20px 0 20px;
-      font-size: 14px;
+      font-size: 18px;
     }
 
     .phone {
       position: relative;
       margin: 30px auto;
       padding-bottom: 5px;
-      width: 274px;
-      height: 564px;
+      width: 244px;
+      height: 534px;
       overflow: hidden;
       @include desktop {
         display: none;
@@ -146,8 +155,8 @@
 
       .screen {
         position: absolute;
-        width: 242px;
-        height: 524px;
+        width: 212px;
+        height: 464px;
         top: 15px;
         left: 16px;
         border-radius: 23px;

@@ -8,7 +8,9 @@ const Tags = (stack) => {
   return (
     <div className="tag">
       {tags.stack.map((tag, index) => (
-        <span key={index}>{tag}</span>
+        <span key={index} aria-label={tag} tabIndex={1}>
+          {tag}
+        </span>
       ))}
     </div>
   );

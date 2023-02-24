@@ -28,10 +28,12 @@ const Item = (props) => {
   return (
     <div className="item" ref={itemRef}>
       <div
-        className="title"
+        className="item-title"
         onClick={() => {
           setModalOpen(!modalOpen);
         }}
+        tabIndex={0}
+        aria-label={props.item.title}
       >
         {props.item.title}
       </div>

@@ -23,12 +23,12 @@ const Mockup = ({ item, modal, closeModal }) => {
                 En voir plus
               </a>
             </button>
-            <span className="repository">
+            <button className="repository">
               <a href={repository} target="_blank">
                 <i className="fa-brands fa-github"></i>
                 Dépot GitHub
               </a>
-            </span>
+            </button>
           </div>
         </div>
         <p className="description">{description}</p>
