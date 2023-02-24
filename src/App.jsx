@@ -1,21 +1,33 @@
-import About from "./pages/About";
-import Career from "./pages/Career";
-import Skill from "./pages/Skill";
-import Project from "./pages/Project";
-import ScrollLine from "./components/ScrollLine";
+import React, { Suspense } from "react";
 import "./styles/style.scss";
+import "./styles/loader.scss";
+
+const Fallback = () => (
+  <div className="loader">
+    <span>Loading</span>
+    <span>.</span>
+    <span>.</span>
+    <span>.</span>
+  </div>
+);
+
+const About = React.lazy(() => import("./pages/About"));
+const Nav = React.lazy(() => import("./components/Nav"));
+const Career = React.lazy(() => import("./pages/Career"));
+const Skill = React.lazy(() => import("./pages/Skill"));
+const Project = React.lazy(() => import("./pages/Project"));
 
 function App() {
   return (
-    <div className="main">
-      <ScrollLine />
+    <Suspense fallback={<Fallback />}>
       <div className="page">
         <About />
+        <Nav />
         <Career />
         <Skill />
         <Project />
       </div>
-    </div>
+    </Suspense>
   );
 }
 
