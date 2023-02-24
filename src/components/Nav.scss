@@ -1,0 +1,305 @@
+@import "../styles/mixins.scss";
+
+.nav-bar {
+  display: flex;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100lvh;
+  background-color: var(--layout-menu);
+  overflow: hidden;
+  z-index: 10;
+  &::before {
+    content: "";
+    position: absolute;
+    background-image: url(../img/noise.jpg);
+    width: 300%;
+    height: 300%;
+    left: -50%;
+    top: -100%;
+    animation: grain 8s steps(10) infinite;
+    opacity: 0.3;
+  }
+
+  .hamburger-container {
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 20px;
+    left: 20px;
+    padding: 30px;
+    border-radius: 50%;
+    backdrop-filter: blur(4px);
+    overflow: hidden;
+    opacity: 1;
+    transition: 0.4s linear 0.1s;
+    cursor: pointer;
+
+    &::before {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 0%;
+      left: 50%;
+      top: 50%;
+      background-color: rgba(110, 110, 112, 0.267);
+      border-radius: 50%;
+      transition: 0.25s linear;
+    }
+    &:hover:before {
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    &--hidden {
+      opacity: 0;
+    }
+
+    .hamburger {
+      position: absolute;
+      padding: 15px;
+      background-color: transparent;
+      border: none;
+      transition: 0.15s linear;
+      cursor: pointer;
+
+      &:before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-content);
+        transition: 0.5s;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        left: 0;
+        top: 28px;
+        width: 100%;
+        height: 3px;
+        background-color: var(--text-content);
+        transition: 0.5s;
+      }
+      @include desktop {
+        &:hover:before {
+          transform: translateX(10px);
+          box-shadow: 1.5px -2.5px var(--layout-menu);
+        }
+        &:hover:after {
+          transform: translateX(-10px);
+          box-shadow: 1.5px -2.5px var(--layout-menu);
+        }
+        &:hover > .ham-line {
+          transform: translateX(3px);
+          box-shadow: 1.5px -2.5px var(--layout-menu);
+        }
+      }
+      &--active {
+        z-index: -1;
+        &:before {
+          transform: translateX(50px);
+        }
+        &:after {
+          transform: translateX(-50px);
+        }
+      }
+
+      .ham-line {
+        position: absolute;
+        left: 0;
+        top: 14px;
+        height: 3px;
+        width: 24px;
+        background-color: var(--text-content);
+        transition: 0.25s ease-in-out 0.1s;
+        &--active {
+          transform: translateX(50px);
+        }
+      }
+    }
+  }
+
+  .menu-container {
+    display: flex;
+    position: relative;
+    flex-direction: column;
+    justify-content: center;
+    width: 0;
+    overflow: hidden;
+    transition: 0.15s linear 0.2s;
+    &--open {
+      width: 100vw;
+      & > .menu-close {
+        &:before {
+          transform: rotate(45deg);
+        }
+        &::after {
+          transform: rotate(-45deg);
+        }
+      }
+      @include desktop {
+        width: 250px;
+      }
+    }
+
+    .menu-close {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 30px;
+      left: 30px;
+      padding: 20px;
+      background-color: transparent;
+      border: none;
+      overflow: hidden;
+      cursor: pointer;
+      transition: 0.15s linear;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transition: 0.5s;
+      }
+      &:after {
+        content: "";
+        position: absolute;
+        width: 100%;
+        height: 3px;
+        background-color: white;
+        transition: 0.5s;
+      }
+      @include desktop {
+        display: none;
+      }
+    }
+
+    .circle-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex: 2;
+      height: 100%;
+      width: 100%;
+
+      .circle {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        width: 185px;
+        height: 185px;
+        border-radius: 50%;
+        background-color: var(--mail-color);
+
+        .logo {
+          position: absolute;
+          width: 200px;
+          height: 200px;
+          background: url(../img/bear.gif);
+          background-size: cover;
+          border-radius: 50%;
+          background-repeat: no-repeat;
+          background-position: 50% -55%;
+          transform: scaleX(-1);
+          filter: brightness(1.1);
+        }
+      }
+    }
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+      flex: 1;
+
+      li {
+        position: relative;
+        display: flex;
+        color: var(--text-menu);
+        font-size: 22px;
+        border-top: 2px solid var(--menu-line);
+        text-shadow: 2px 2px rgba(128, 128, 128, 0);
+        transition: 0.25s linear;
+        cursor: pointer;
+        &:nth-last-child(1) {
+          border-bottom: 2px solid var(--menu-line);
+        }
+        a {
+          text-align: center;
+          padding: 30px 20px;
+          width: 100%;
+          height: 100%;
+          @include desktop {
+            padding: 20px;
+          }
+        }
+
+        &:before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 0;
+          height: 100%;
+          background-color: var(--more-color);
+          z-index: -2;
+          transition: 0.3s ease;
+        }
+
+        &:hover {
+          color: var(--text-content);
+          text-shadow: 2px 2px var(--text-color);
+
+          &::before {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    .social {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      width: 100%;
+      gap: 30px;
+      z-index: 1;
+
+      a {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 5px;
+
+        i {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 40px;
+          height: 40px;
+          font-size: 24px;
+          color: var(--text-content);
+          animation: glitch 425ms infinite;
+
+          @include desktop {
+            transition: 0.1s linear;
+            &:hover {
+              animation: none;
+              color: var(--text-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}
