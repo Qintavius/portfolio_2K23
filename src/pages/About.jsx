@@ -5,6 +5,7 @@ import "./About.scss";
 import ScrollLine from "../components/ScrollLine";
 import TextAnimation from "../components/TextAnimation";
 import Bear from "../img/lowPolyBear.png";
+import Langage from "../components/Langage";
 
 const About = () => {
   const { ref, inView } = useInView({
@@ -17,6 +18,7 @@ const About = () => {
       ref={ref}
       className={inView ? "wrapper about wrapper about--show" : "wrapper about"}
     >
+      <Langage />
       <h2 aria-label="à propos">à propos</h2>
       <div className="text-container">
         <p className={inView ? "text--var-1 text--var-1--show" : "text--var-1"}>
