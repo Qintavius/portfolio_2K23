@@ -103,9 +103,12 @@
             "Figma",
             "GitHub"
         ],
-        "description" : "Vous y êtes.",
-        "pictures" : "",
-        "repository" : "",
+        "description" : "La maquette a été réalisée avec Figma, et les illustrations avec InkScape. Intersection-observer est utilisé pour les animations au défilement.",
+        "pictures" : [
+            "./img/portfolio.jpg",
+            "./img/portfolio-laptop.jpg"
+        ],
+        "repository" : "https://github.com/Qintavius/portfolio_2K23",
         "website" : ""
     },
     {
