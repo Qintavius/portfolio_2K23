@@ -1,28 +1,25 @@
 @import "../styles/mixins.scss";
 
 .skill {
-  z-index: 0;
-  @include desktop {
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: 0;
-      right: 100px;
-      width: 50px;
-      height: 100%;
-      background-color: var(--layout-text-in-deep);
-    }
-  }
-  &::before {
+  &::before,
+  &::after {
     content: "SKILLS";
-    color: var(--layout-text-in-deep);
-    z-index: 1;
+    transform: translateY(-100%);
+    z-index: 0;
   }
-  &--show:before {
-    transform: translate(0);
+
+  &--show {
+    &::before,
+    &::after {
+      transform: translateY(0px);
+      @include desktop {
+        transform: translateY(95%);
+      }
+    }
+
     @include desktop {
-      transform: translateY(15%);
       right: initial;
+      left: initial;
     }
   }
 
@@ -31,24 +28,29 @@
     justify-content: center;
     align-items: flex-start;
     position: absolute;
-    width: 100vw;
-    height: 100vh;
-    background-color: var(--water-deep-color);
+    width: 100%;
+    height: 100%;
     background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.918) 35%,
       rgba(14, 76, 112, 1) 100%
     );
+    z-index: -1;
+  }
 
-    .iceberg-down {
-      filter: brightness(0.8);
-      object-fit: cover;
-      animation: iceberg 7s ease-in-out infinite;
-      z-index: 1;
-      @include desktop {
-        max-width: 779px;
-        width: 100%;
-      }
+  .iceberg-down {
+    position: absolute;
+    align-self: center;
+    max-width: 859px;
+    width: 80%;
+    height: auto;
+    top: 0;
+    filter: brightness(0.5);
+    object-fit: contain;
+    animation: iceberg 7s ease-in-out infinite;
+    z-index: 1;
+    @include desktop {
+      width: 100%;
     }
   }
 
@@ -57,10 +59,9 @@
     flex-wrap: wrap;
     width: 100%;
     height: 100%;
-    margin-top: 70px;
     align-content: center;
     padding: 0 40px;
-    z-index: 100;
+    z-index: 1;
     @include desktop {
       width: 50%;
       justify-content: center;
@@ -75,7 +76,7 @@
       gap: 20px;
       padding-right: 20px;
       height: fit-content;
-      border-right: 1px solid var(--scroll-line);
+      border-right: 1px solid var(--text-menu);
       overflow: hidden;
       @include desktop {
         align-items: flex-start;
@@ -87,11 +88,16 @@
       }
 
       .element {
-        font-size: 16px;
-        font-weight: 400;
+        font-size: 24px;
         transform: translateX(100vw);
         transition: 0.4s;
         transition-delay: 0.3s;
+        &:hover {
+          animation: glitch 375ms infinite;
+          text-shadow: 1.5px 0.5px 0 rgba(255, 0, 0, 0.75),
+            -1.5px -0.5px 0 rgba(0, 255, 0, 0.75),
+            1.5px 0.5px 0 rgba(0, 0, 255, 0.75);
+        }
         @include desktop {
           transform: translateX(-100vw);
         }
@@ -121,6 +127,15 @@
         }
         &:nth-child(10) {
           transition-delay: 1.2s;
+        }
+        &:nth-child(11) {
+          transition-delay: 1.3s;
+        }
+        &:nth-child(12) {
+          transition-delay: 1.4s;
+        }
+        &:nth-child(13) {
+          transition-delay: 1.5s;
         }
         &--show {
           transform: translateX(0);

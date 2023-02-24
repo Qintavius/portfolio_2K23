@@ -1,33 +1,33 @@
 @import "../styles/mixins.scss";
 
 .project {
-  background-color: var(--water-deep-color);
   align-items: center;
 
-  &::before {
+  &::before,
+  &::after {
     content: "PROJECTS";
-    top: -8px;
-    color: var(--layout-text-in-deep);
     transform: translateY(100%);
-    transition: all 1s;
+    z-index: -1;
   }
-  &--show::before {
-    transform: translateY(0);
+
+  &--show {
+    &::before,
+    &::after {
+      transform: translateY(0px);
+    }
+
     @include desktop {
       right: initial;
+      left: initial;
     }
   }
 
-  @include desktop {
-    &::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      right: 100px;
-      width: 50px;
-      height: 37%;
-      background-color: var(--layout-text-in-deep);
-    }
+  .deep-mask {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: var(--water-deep-color);
+    z-index: -1;
   }
 
   .container-project {
@@ -38,7 +38,7 @@
     .container-project {
       position: relative;
       display: flex;
-      width: 50%;
+      width: 65%;
       height: 530px;
 
       .display-mockup {
@@ -47,7 +47,6 @@
         top: 0;
         width: 80%;
         height: 100%;
-        border: 2px dashed rgba(128, 128, 128, 0.384);
         z-index: -1;
       }
     }
@@ -65,8 +64,8 @@
     filter: blur(5px);
     transition: 1.35s ease;
     @include desktop {
-      align-items: flex-start;
-      overflow: hidden;
+      flex-direction: row;
+      gap: 30px;
     }
     &--show {
       opacity: 1;

@@ -17,11 +17,14 @@ const Project = () => {
 
   return (
     <section
+      id="projects"
       ref={ref}
       className={
         inView ? "wrapper project wrapper project--show" : "wrapper project"
       }
     >
+      <h2 aria-label="mes projets">Projets</h2>
+      <div className="deep-mask"></div>
       <div className="container-project">
         <div
           className={
@@ -32,7 +35,6 @@ const Project = () => {
             <Item key={item.title} item={item} />
           ))}
         </div>
-        <div className="display-mockup"></div>
       </div>
     </section>
   );
