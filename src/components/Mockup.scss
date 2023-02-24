@@ -71,7 +71,7 @@
           cursor: pointer;
           &:hover::after,
           &:hover::before {
-            transform: scale(1.2);
+            transform: rotate(0);
           }
         }
 
@@ -108,6 +108,12 @@
             padding: 8px 12px;
             border-radius: 10px;
             font-size: 16px;
+            @include desktop {
+              transition: 0.2s;
+              &:hover {
+                filter: brightness(0.8);
+              }
+            }
           }
         }
 
@@ -123,6 +129,12 @@
             border-radius: 10px;
             font-size: 16px;
             background-color: var(--repo-color);
+            @include desktop {
+              transition: 0.2s;
+              &:hover {
+                filter: brightness(0.8);
+              }
+            }
           }
 
           i {

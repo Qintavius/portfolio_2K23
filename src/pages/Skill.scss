@@ -3,7 +3,7 @@
 .skill {
   &::before,
   &::after {
-    content: "SKILLS";
+    content: "compétences";
     transform: translateY(-100%);
     z-index: 0;
   }

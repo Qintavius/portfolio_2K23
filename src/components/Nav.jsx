@@ -73,7 +73,7 @@ const Nav = () => {
               aria-label="Aller sur à propos"
               tabIndex={0}
             >
-              About
+              à propos
             </Link>
           </li>
 
@@ -87,7 +87,7 @@ const Nav = () => {
               aria-label="Aller sur parcours"
               tabIndex={0}
             >
-              Career
+              Parcours
             </Link>
           </li>
 
@@ -101,7 +101,7 @@ const Nav = () => {
               aria-label="Aller sur compétences"
               tabIndex={0}
             >
-              Skills
+              Compétencces
             </Link>
           </li>
 
@@ -115,7 +115,7 @@ const Nav = () => {
               aria-label="Aller sur projets"
               tabIndex={0}
             >
-              Projects
+              Projets
             </Link>
           </li>
         </ul>

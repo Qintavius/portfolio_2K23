@@ -225,6 +225,7 @@
         display: flex;
         color: var(--text-menu);
         font-size: 22px;
+        text-transform: capitalize;
         border-top: 2px solid var(--menu-line);
         text-shadow: 2px 2px rgba(128, 128, 128, 0);
         transition: 0.25s linear;
