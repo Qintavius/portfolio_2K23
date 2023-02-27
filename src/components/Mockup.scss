@@ -17,6 +17,29 @@
     rgb(0, 0, 0) 60%,
     rgba(14, 76, 112, 1) 100%
   );
+  @include desktop {
+    position: absolute;
+    visibility: hidden;
+    opacity: 0;
+    right: 0;
+    top: 0;
+    margin: auto;
+    filter: blur(10px);
+    transform: scale(0.4);
+  }
+
+  &--open {
+    height: 90vh;
+    z-index: 100;
+    @include desktop {
+      visibility: visible;
+      opacity: 1;
+      height: 500px;
+      width: 732px;
+      filter: blur(0);
+      transform: scale(1);
+    }
+  }
 
   &::before {
     content: "";
@@ -30,148 +53,168 @@
     opacity: 0.3;
     z-index: -1;
   }
-  @include desktop {
-    position: absolute;
-    visibility: hidden;
-    opacity: 0;
-    filter: blur(10px);
-    transform: scale(0.4);
-  }
-  &--open {
-    height: 90vh;
-    z-index: 100;
-    @include desktop {
-      visibility: visible;
-      opacity: 1;
-      height: 100%;
-      filter: blur(0);
-      transform: scale(1);
-    }
-  }
+}
 
-  .modal {
+.modal {
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+
+  .modal-nav {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     width: 100%;
-    height: 100%;
-    padding: 20px;
+    height: 40px;
 
-    .modal-nav {
+    .close {
       display: flex;
-      flex-direction: row-reverse;
-      justify-content: space-between;
-      width: 100%;
+      justify-content: center;
+      align-items: center;
+      width: 40px;
       height: 40px;
-
-      .close {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        width: 40px;
-        height: 40px;
-        @include desktop {
-          cursor: pointer;
-          &:hover::after,
-          &:hover::before {
-            transform: rotate(0);
-          }
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          height: 3px;
-          width: 20px;
-          transform: rotate(45deg);
-          background-color: var(--text-content);
-          transition: 0.15s;
-        }
-        &::after {
-          content: "";
-          position: absolute;
-          height: 3px;
-          width: 20px;
-          transform: rotate(-45deg);
-          background-color: var(--text-content);
-          transition: 0.15s;
-        }
-      }
-
-      .nav-tab {
-        display: flex;
-        align-items: center;
-        gap: 15px;
-
-        .more {
-          background-color: transparent;
-          border: none;
-          a {
-            background-color: var(--more-color);
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 16px;
-            @include desktop {
-              transition: 0.2s;
-              &:hover {
-                filter: brightness(0.8);
-              }
-            }
-          }
-        }
-
-        .repository {
-          background-color: transparent;
-          border: none;
-          a {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 8px;
-            padding: 7px 12px;
-            border-radius: 10px;
-            font-size: 16px;
-            background-color: var(--repo-color);
-            @include desktop {
-              transition: 0.2s;
-              &:hover {
-                filter: brightness(0.8);
-              }
-            }
-          }
-
-          i {
-            font-size: 16px;
-          }
-        }
-      }
-    }
-
-    .description {
-      margin: 20px 0 20px;
-      font-size: 18px;
-    }
-
-    .phone {
-      position: relative;
-      margin: 30px auto;
-      padding-bottom: 5px;
-      width: 244px;
-      height: 534px;
-      overflow: hidden;
       @include desktop {
+        cursor: pointer;
+        &:hover::after,
+        &:hover::before {
+          transform: rotate(0);
+        }
+      }
+
+      &::before {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 20px;
+        transform: rotate(45deg);
+        background-color: var(--text-content);
+        transition: 0.15s;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        height: 3px;
+        width: 20px;
+        transform: rotate(-45deg);
+        background-color: var(--text-content);
+        transition: 0.15s;
+      }
+    }
+
+    .nav-tab {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+
+      .more {
+        background-color: transparent;
+        border: none;
+        a {
+          background-color: var(--more-color);
+          padding: 8px 12px;
+          border-radius: 10px;
+          font-size: 16px;
+          @include desktop {
+            transition: 0.2s;
+            &:hover {
+              filter: brightness(0.8);
+            }
+          }
+        }
+      }
+
+      .repository {
+        background-color: transparent;
+        border: none;
+        a {
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          gap: 8px;
+          padding: 7px 12px;
+          border-radius: 10px;
+          font-size: 16px;
+          background-color: var(--repo-color);
+          @include desktop {
+            transition: 0.2s;
+            &:hover {
+              filter: brightness(0.8);
+            }
+          }
+        }
+
+        i {
+          font-size: 16px;
+        }
+      }
+    }
+  }
+
+  .description {
+    margin: 20px 0 20px;
+    font-size: 18px;
+  }
+
+  .phone {
+    position: relative;
+    margin: 30px auto;
+    padding-bottom: 5px;
+    width: 244px;
+    height: 534px;
+    overflow: hidden;
+    @include desktop {
+      display: none;
+    }
+
+    img {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .screen {
+      position: absolute;
+      width: 212px;
+      height: 464px;
+      top: 15px;
+      left: 16px;
+      border-radius: 23px;
+      background-color: black;
+      overflow: scroll;
+      &::-webkit-scrollbar {
         display: none;
       }
+
+      img {
+        border-radius: 23px;
+        vertical-align: sub;
+      }
+    }
+  }
+
+  .laptop {
+    display: none;
+    @include desktop {
+      display: flex;
+      position: absolute;
+      justify-content: center;
+      margin: 20px auto;
+      bottom: 10px;
+      right: 0;
+      left: 0;
+      height: auto;
+      width: 500px;
+      overflow: hidden;
 
       img {
         width: 100%;
         object-fit: cover;
       }
 
-      .screen {
+      .screen-laptop {
         position: absolute;
-        width: 212px;
-        height: 464px;
+        height: 237px;
+        width: 398px;
         top: 15px;
-        left: 16px;
-        border-radius: 23px;
         background-color: black;
         overflow: scroll;
         &::-webkit-scrollbar {
@@ -179,49 +222,12 @@
         }
 
         img {
-          border-radius: 23px;
-          vertical-align: sub;
-        }
-      }
-    }
-
-    .laptop {
-      display: none;
-      @include desktop {
-        display: flex;
-        position: absolute;
-        justify-content: center;
-        margin: 20px auto;
-        bottom: 10px;
-        right: 0;
-        left: 0;
-        height: auto;
-        width: 500px;
-        overflow: hidden;
-
-        img {
           width: 100%;
+          vertical-align: sub;
           object-fit: cover;
-        }
-
-        .screen-laptop {
-          position: absolute;
-          height: 237px;
-          width: 398px;
-          top: 15px;
-          background-color: black;
-          overflow: scroll;
-          &::-webkit-scrollbar {
-            display: none;
-          }
-
-          img {
-            width: 100%;
-            vertical-align: sub;
-            object-fit: cover;
-          }
         }
       }
     }
   }
 }
+// }
