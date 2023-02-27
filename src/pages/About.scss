@@ -11,6 +11,9 @@
   &::after {
     content: "à propos";
     transform: translateY(-100vw);
+    @include desktop {
+      transform: translateY(-100vh);
+    }
   }
 
   &--show {
@@ -28,7 +31,7 @@
   .flag {
     position: absolute;
     right: 20px;
-    top: 20px;
+    top: 25px;
     margin: 10px;
     z-index: 1;
   }

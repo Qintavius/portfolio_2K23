@@ -27,7 +27,7 @@ const Career = () => {
             inView ? "sub-container sub-container--show" : "sub-container"
           }
         >
-          <h2>Développeur web</h2>
+          <h3>Développeur web</h3>
           <p className="date">2022</p>
           <p className="text">
             Formation développeur web
@@ -53,7 +53,7 @@ const Career = () => {
             inView ? "sub-container sub-container--show" : "sub-container"
           }
         >
-          <h2>Technicien informatique</h2>
+          <h3>Technicien informatique</h3>
           <p className="date">2021 - 2022</p>
           <p className="text">
             Formation technicien informatique
@@ -79,7 +79,7 @@ const Career = () => {
             inView ? "sub-container sub-container--show" : "sub-container"
           }
         >
-          <h2>Autodidacte</h2>
+          <h3>Autodidacte</h3>
           <p className="date">1989 - ?</p>
           <p className="text">Vue.js / Figma / Firebase / Wordpress</p>
         </div>
