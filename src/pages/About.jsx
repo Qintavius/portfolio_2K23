@@ -43,7 +43,7 @@ const About = () => {
           <p className={inView ? "subtext subtext--show" : "subtext"}>
             <span>Développeur front-end</span>
             <br />
-            <span>UI / UX design</span>
+            <span>"Navigateur" sur le web</span>
           </p>
         </div>
       </div>

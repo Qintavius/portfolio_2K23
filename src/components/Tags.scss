@@ -12,7 +12,7 @@
     padding: 5px 10px;
     border-radius: 5px;
     background-color: var(--text-color);
-    font-size: 16px;
+    font-size: clamp(1.125rem,1.0841rem + .1818vw,1.375rem);
     text-transform: uppercase;
   }
 }

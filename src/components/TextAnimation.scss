@@ -59,7 +59,7 @@
   }
 
   p {
-    font-size: 50px;
+    font-size: clamp(3.875rem, 3.6909rem + 0.8182vw, 5rem);
     transition: 0.35s cubic-bezier(0.5, 3, 0.5, 1);
     &:hover {
       transform: translateY(-5px);

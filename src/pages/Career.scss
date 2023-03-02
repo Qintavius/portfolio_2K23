@@ -44,7 +44,7 @@
       bottom: 0px;
       opacity: 0;
       visibility: hidden;
-      width: 320px;
+      width: 360px;
       overflow: hidden;
       transition: 0.5s;
       z-index: 0;
@@ -118,20 +118,20 @@
 
     h3 {
       text-transform: uppercase;
-      font-size: 22px;
+      font-size: clamp(1.375rem,1.3341rem + .1818vw,1.625rem);
     }
 
     .date {
-      font-size: 16px;
+      font-size: clamp(1rem,.9591rem + .1818vw,1.25rem);
     }
 
     .text {
-      font-size: 20px;
+      font-size: clamp(1.25rem,1.2091rem + .1818vw,1.5rem);
       line-height: 126%;
     }
 
     .grad {
-      font-size: 20px;
+      font-size: clamp(1.25rem,1.2091rem + .1818vw,1.5rem);
       text-transform: uppercase;
       animation: glitch 500ms infinite;
       text-shadow: 2px 1px 0 rgba(255, 0, 0, 0.75),
@@ -183,7 +183,7 @@
     &.block-1 {
       text-align: right;
       @include desktop {
-        height: 220px;
+        height: 240px;
         transform: translate(-190px, -315px);
         border-right: 1.5px solid #fff;
         & > .sub-container {
@@ -201,9 +201,9 @@
     &.block-2 {
       text-align: left;
       @include desktop {
-        height: 265px;
+        height: 285px;
         border-left: 1.5px solid #fff;
-        transform: translate(370px, -160px);
+        transform: translate(370px,-160px);
         & > .sub-container {
           transform: translateY(0) translateX(-100%);
           &--show {

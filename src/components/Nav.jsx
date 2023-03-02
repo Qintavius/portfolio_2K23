@@ -65,7 +65,7 @@ const Nav = () => {
         <ul>
           <li>
             <Link
-              onClick={() => setIsOpen(false)}
+              onTouchEnd={() => setIsOpen(false)}
               to="about"
               spy={true}
               smooth={true}
@@ -79,7 +79,7 @@ const Nav = () => {
 
           <li>
             <Link
-              onClick={() => setIsOpen(false)}
+              onTouchEnd={() => setIsOpen(false)}
               to="career"
               spy={true}
               smooth={true}
@@ -93,7 +93,7 @@ const Nav = () => {
 
           <li>
             <Link
-              onClick={() => setIsOpen(false)}
+              onTouchEnd={() => setIsOpen(false)}
               to="skills"
               spy={true}
               smooth={true}
@@ -101,13 +101,13 @@ const Nav = () => {
               aria-label="Aller sur compétences"
               tabIndex={0}
             >
-              Compétencces
+              Compétences
             </Link>
           </li>
 
           <li>
             <Link
-              onClick={() => setIsOpen(false)}
+              onTouchEnd={() => setIsOpen(false)}
               to="projects"
               spy={true}
               smooth={true}
