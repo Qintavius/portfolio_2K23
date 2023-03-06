@@ -128,12 +128,32 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    justify-content: space-evenly;
     width: 0;
+    height: 100%;
+    padding: 1.5rem 0;
+    gap: 1.5rem;
     overflow: hidden;
-    transition: 0.15s linear 0.2s;
+    transition: 0.25s ease 0.2s;
+
+    & > .circle-container,
+    .nav-tab,
+    .social,
+    .flag {
+      opacity: 0;
+      transition: all 0.5s ease-in-out;
+    }
+
     &--open {
       width: 100vw;
+      & > .circle-container,
+      .nav-tab,
+      .social,
+      .flag {
+        opacity: 1;
+      }
+
       & > .menu-close {
         &:before {
           transform: rotate(45deg);
@@ -185,26 +205,20 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      flex: 2;
-      width: 100%;
-      @include desktop {
-        flex: 1;
-      }
+      height: 160px;
+      width: 160px;
 
       .circle {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        position: relative;
-        width: 185px;
-        height: 185px;
+        width: 150px;
+        height: 150px;
+        position: absolute;
         border-radius: 50%;
         background-color: var(--mail-color);
 
         .logo {
           position: absolute;
-          width: 200px;
-          height: 200px;
+          width: 100%;
+          height: 100%;
           background: url(../img/bear.gif);
           background-size: cover;
           border-radius: 50%;
@@ -221,25 +235,23 @@
       flex-direction: column;
       justify-content: center;
       width: 100%;
-      height: 100%;
-      flex: 1;
 
       li {
         position: relative;
-        display: flex;
-        color: var(--text-menu);
-        font-size: 22px;
-        text-transform: capitalize;
+        width: 100%;
+        height: clamp(6rem, 3.8571rem + 10.7143vw, 9rem);
         border-top: 2px solid var(--menu-line);
-        text-shadow: 2px 2px rgba(128, 128, 128, 0);
-        transition: 0.25s linear;
         cursor: pointer;
         &:nth-last-child(1) {
           border-bottom: 2px solid var(--menu-line);
         }
         a {
-          text-align: center;
-          padding: 30px 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-size: 1.8rem;
+          text-transform: uppercase;
+          white-space: nowrap;
           width: 100%;
           height: 100%;
         }
@@ -258,7 +270,6 @@
 
         &:hover {
           color: var(--text-content);
-          text-shadow: 2px 2px var(--text-color);
 
           &::before {
             width: 100%;
@@ -270,10 +281,8 @@
     .social {
       display: flex;
       justify-content: center;
-      flex: 1;
       gap: 30px;
       width: 100%;
-      z-index: 1;
 
       a {
         display: flex;

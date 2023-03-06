@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
+import Langage from "./Langage";
 import "./Nav.scss";
 
 const Nav = () => {
@@ -62,7 +63,9 @@ const Nav = () => {
           </div>
         </div>
 
-        <ul>
+        <Langage />
+
+        <ul className="nav-tab">
           <li>
             <Link
               onTouchEnd={() => setIsOpen(false)}

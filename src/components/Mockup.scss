@@ -4,9 +4,9 @@
   position: fixed;
   display: flex;
   flex-direction: column;
+  width: 100%;
   bottom: 0;
   left: 0;
-  width: 100%;
   height: 0;
   border-radius: 25px;
   transition: 0.5s ease;
@@ -17,6 +17,11 @@
     rgb(0, 0, 0) 60%,
     rgba(14, 76, 112, 1) 100%
   );
+  & > .modal {
+    opacity: 0;
+    transition: 0.3s ease-in-out;
+    transition-delay: 300ms;
+  }
   @include desktop {
     position: absolute;
     visibility: hidden;
@@ -30,12 +35,17 @@
   }
 
   &--open {
-    height: 90vh;
+    height: calc(100vh - 100px);
     z-index: 100;
+    bottom: 0;
+    & > .modal {
+      opacity: 1;
+    }
     @include desktop {
       visibility: visible;
       opacity: 1;
-      height: 520px;
+      min-height: 590px;
+      height: 100%;
       width: 68%;
       filter: blur(0);
       transform: scale(1);
@@ -64,6 +74,7 @@
   .modal-nav {
     display: flex;
     flex-direction: row-reverse;
+    align-items: center;
     justify-content: space-between;
     width: 100%;
     height: 40px;
@@ -103,18 +114,16 @@
     }
 
     .nav-tab {
-      display: flex;
-      align-items: center;
-      gap: 15px;
-
       .more {
         background-color: transparent;
         border: none;
+        margin-right: 15px;
         a {
           background-color: var(--more-color);
           padding: 8px 12px;
           border-radius: 10px;
-          font-size: 16px;
+          font-size: 1.3rem;
+          font-weight: 500;
           @include desktop {
             transition: 0.2s;
             &:hover {
@@ -132,9 +141,10 @@
           justify-content: center;
           align-items: center;
           gap: 8px;
-          padding: 7px 12px;
+          padding: 8px 12px;
           border-radius: 10px;
-          font-size: 16px;
+          font-size: 1.3rem;
+          font-weight: 500;
           background-color: var(--repo-color);
           @include desktop {
             transition: 0.2s;
@@ -145,7 +155,7 @@
         }
 
         i {
-          font-size: 16px;
+          font-size: 1.4rem;
         }
       }
     }
@@ -153,7 +163,8 @@
 
   .description {
     margin: 20px 0 20px;
-    font-size: clamp(1.125rem, 1.0841rem + 0.1818vw, 1.375rem);
+    font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
+    font-weight: 400;
   }
 
   .phone {

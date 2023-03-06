@@ -20,13 +20,13 @@ const Mockup = ({ item, modal, closeModal }) => {
           <div className="nav-tab">
             <button className="more">
               <a href={website} target="_blank">
-                En voir plus
+                En voir plus...
               </a>
             </button>
             <button className="repository">
               <a href={repository} target="_blank">
                 <i className="fa-brands fa-github"></i>
-                Dépot GitHub
+                Repository
               </a>
             </button>
           </div>

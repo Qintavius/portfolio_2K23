@@ -1,11 +1,46 @@
 .flag {
+  position: relative;
   display: flex;
-  align-items: center;
   justify-content: center;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  overflow: hidden;
+  align-items: center;
+  width: 100%;
+
+  .hoverbox {
+    position: absolute;
+    padding: 10px;
+    color: var(--text-content);
+    background-color: black;
+    border-radius: 10px;
+    font-size: 2rem;
+    transform: translateY(-2.5em);
+    opacity: 0;
+    transition: 1s;
+    z-index: 0;
+    &:before {
+      content: "";
+      position: absolute;
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      border: 15px solid;
+      border-color: #000 #0000 #0000 #0000;
+    }
+  }
+
+  .lang-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 100%;
+    overflow: hidden;
+    z-index: 10;
+    &:hover ~ .hoverbox {
+      transform: translateY(-4em);
+      opacity: 1;
+    }
+  }
 
   a {
     width: 100%;

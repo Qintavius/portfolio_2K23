@@ -11,8 +11,9 @@
   span {
     padding: 5px 10px;
     border-radius: 5px;
-    background-color: var(--text-color);
-    font-size: clamp(1.125rem,1.0841rem + .1818vw,1.375rem);
+    background-color: var(--more-color);
+    font-size: clamp(1.2rem, 1.1361rem + 0.3524vw, 1.7rem);
+    font-weight: 600;
     text-transform: uppercase;
   }
 }
