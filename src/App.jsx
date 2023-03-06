@@ -20,9 +20,9 @@ const Project = React.lazy(() => import("./pages/Project"));
 function App() {
   return (
     <Suspense fallback={<Fallback />}>
+      <Nav />
       <div className="page">
         <About />
-        <Nav />
         <Career />
         <Skill />
         <Project />
