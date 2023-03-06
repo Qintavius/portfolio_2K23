@@ -2,23 +2,35 @@
 
 .project {
   align-items: center;
+  justify-content: end;
+  @include desktop {
+    justify-content: center;
+  }
 
-  &::before,
-  &::after {
+  &::before {
     content: "projets";
     transform: translateY(100vh);
-    z-index: -1;
+    z-index: 0;
+    @include desktop {
+      opacity: 0;
+      transform: translateX(50px);
+    }
   }
 
   &--show {
-    &::before,
-    &::after {
+    &::before {
       transform: translateY(0px);
+      @include desktop {
+        opacity: 1;
+        transform: translateX(0);
+      }
     }
+  }
 
-    @include desktop {
-      right: initial;
-      left: initial;
+  .gradient-line {
+    &--show {
+      height: 40vh;
+      background: linear-gradient(rgba(255, 255, 255, 0), #45c6ea, #8bb0ff);
     }
   }
 
@@ -32,7 +44,10 @@
 
   .container-project {
     width: 100%;
-    height: 100%;
+    height: 100vh;
+    @include desktop {
+      height: 100%;
+    }
   }
   @include desktop {
     .container-project {

@@ -2,35 +2,30 @@
 
 .career {
   justify-content: flex-start;
-  gap: 30px;
-  padding: 30px 0;
+  gap: 5rem;
+  padding: 5rem 0;
+
   @include desktop {
     justify-content: center;
     align-items: center;
   }
 
-  &::before,
-  &::after {
+  &::before {
     content: "parcours";
     transform: translateX(-100vw);
     @include desktop {
-      transform: translateY(100vh);
-      z-index: -2;
+      opacity: 0;
+      transform: translateX(50px);
     }
   }
 
   &--show {
-    &::before,
-    &::after {
+    &::before {
       transform: translateX(0);
       @include desktop {
-        transform: translateY(-85%);
+        opacity: 1;
+        transform: translateX(0);
       }
-    }
-
-    @include desktop {
-      right: initial;
-      left: initial;
     }
   }
 
@@ -38,7 +33,7 @@
     display: flex;
     flex-direction: column;
     position: relative;
-    z-index: 2;
+    z-index: 1;
     @include desktop {
       position: absolute;
       bottom: 0px;
@@ -47,7 +42,7 @@
       width: 360px;
       overflow: hidden;
       transition: 0.5s;
-      z-index: 0;
+      z-index: 1;
       &--show {
         bottom: 150px;
         opacity: 1;
@@ -63,19 +58,20 @@
       opacity: 0;
       transform: translateY(30px);
       filter: blur(5px);
-      transition: all 1s;
-      transition-delay: 0.5s;
+      transition: 0.8s;
+      transition-delay: 0.4s;
       &--show {
         opacity: 1;
         transform: translateY(0);
         filter: blur(0);
+        z-index: 100;
         @include desktop {
           transform: translateY(0);
         }
       }
     }
 
-    .line {
+    .text-line {
       display: flex;
       position: relative;
       align-items: center;
@@ -118,20 +114,24 @@
 
     h3 {
       text-transform: uppercase;
-      font-size: clamp(1.375rem,1.3341rem + .1818vw,1.625rem);
+      font-size: clamp(1.5rem, 1.4202rem + 0.4405vw, 2.125rem);
+      font-weight: 700;
     }
 
     .date {
-      font-size: clamp(1rem,.9591rem + .1818vw,1.25rem);
+      font-size: clamp(1.125rem, 1.0452rem + 0.4405vw, 1.75rem);
+      font-weight: 400;
     }
 
     .text {
-      font-size: clamp(1.25rem,1.2091rem + .1818vw,1.5rem);
-      line-height: 126%;
+      font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
+      line-height: 1.6;
+      font-weight: 600;
     }
 
     .grad {
-      font-size: clamp(1.25rem,1.2091rem + .1818vw,1.5rem);
+      font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
+      font-weight: 600;
       text-transform: uppercase;
       animation: glitch 500ms infinite;
       text-shadow: 2px 1px 0 rgba(255, 0, 0, 0.75),
@@ -183,8 +183,9 @@
     &.block-1 {
       text-align: right;
       @include desktop {
-        height: 240px;
-        transform: translate(-190px, -315px);
+        max-height: 440px;
+        height: 30%;
+        transform: translate(-20rem, -40rem);
         border-right: 1.5px solid #fff;
         & > .sub-container {
           transform: translateY(0) translateX(100%);
@@ -201,9 +202,10 @@
     &.block-2 {
       text-align: left;
       @include desktop {
-        height: 285px;
+        max-height: 485px;
+        height: 30%;
         border-left: 1.5px solid #fff;
-        transform: translate(370px,-160px);
+        transform: translate(42rem, -24rem);
         & > .sub-container {
           transform: translateY(0) translateX(-100%);
           &--show {
@@ -219,8 +221,9 @@
     &.block-3 {
       text-align: right;
       @include desktop {
-        height: 190px;
-        transform: translate(-380px, -90px);
+        max-height: 290px;
+        height: 30%;
+        transform: translate(-42rem, -11rem);
         border-right: 1.5px solid #fff;
         & > .sub-container {
           transform: translateY(0) translateX(100%);
@@ -241,14 +244,15 @@
     max-width: 779px;
     width: 80%;
     height: auto;
-    bottom: 35px;
+    bottom: 7rem;
     object-fit: contain;
     object-position: -5px 0px;
     animation: iceberg 7s ease-in-out infinite;
-    z-index: 1;
+    z-index: -1;
     @include desktop {
       z-index: 1;
       width: 100%;
+      bottom: 13rem;
     }
   }
 
@@ -258,11 +262,10 @@
     max-height: 650px;
     height: 50%;
     bottom: 0;
-    background-color: var(--water-surface-color);
     background: linear-gradient(
       180deg,
       rgba(0, 0, 0, 0) 40%,
-      rgba(6, 140, 239, 0.8) 100%
+      #068cefcc 100%
     );
     z-index: -1;
     @include desktop {

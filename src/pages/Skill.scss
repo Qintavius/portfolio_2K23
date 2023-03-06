@@ -1,29 +1,23 @@
 @import "../styles/mixins.scss";
 
 .skill {
-  &::before,
-  &::after {
+  &::before {
     content: "compétences";
     transform: translateY(-100vh);
-    z-index: 0;
+    z-index: 10;
     @include desktop {
-      bottom: 0;
+      opacity: 0;
+      transform: translateX(50px);
     }
   }
 
   &--show {
-    &::before,
-    &::after {
+    &::before {
       transform: translateY(0px);
       @include desktop {
-        bottom: -50px;
-        transform: translateY(0);
+        opacity: 1;
+        transform: translateX(0);
       }
-    }
-
-    @include desktop {
-      right: initial;
-      left: initial;
     }
   }
 
@@ -37,9 +31,34 @@
     background: linear-gradient(
       0deg,
       rgba(0, 0, 0, 0.918) 35%,
-      rgba(14, 76, 112, 1) 100%
+      rgb(14, 76, 112) 100%
     );
     z-index: -1;
+  }
+
+  .word-mask {
+    display: none;
+    @include desktop {
+      display: flex;
+      position: absolute;
+      flex-direction: column;
+      justify-content: end;
+      color: var(--text-content);
+      opacity: 0.1;
+      filter: brightness(0.7);
+      bottom: 0;
+      left: 0;
+      transition: all 0.2s;
+      z-index: -1;
+      span {
+        text-transform: uppercase;
+        font-family: "Inter", sans-serif;
+        font-weight: 900;
+        font-size: clamp(9.3rem, 7rem + 1.85vw, 13rem);
+        letter-spacing: -0.05em;
+        line-height: 75%;
+      }
+    }
   }
 
   .iceberg-down {
@@ -52,97 +71,84 @@
     filter: brightness(0.5);
     object-fit: contain;
     animation: iceberg 7s ease-in-out infinite;
-    z-index: 1;
+    z-index: 10;
     @include desktop {
       width: 100%;
+      z-index: -1;
     }
   }
 
   .content-list {
     display: flex;
-    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
     width: 100%;
     height: 100%;
-    align-content: center;
-    padding: 0 40px;
-    z-index: 1;
-    @include desktop {
-      width: 50%;
-      justify-content: center;
-      transform: translateX(30%);
-    }
+    color: var(--text-content);
+    z-index: 100;
 
-    ul {
+    .list-container {
       display: flex;
-      flex-direction: column;
-      align-items: flex-end;
-      flex: 1;
-      gap: 20px;
-      padding-right: 20px;
-      height: fit-content;
-      border-right: 1px solid var(--text-menu);
-      overflow: hidden;
-      @include desktop {
-        align-items: flex-start;
-        padding-right: 0px;
-        padding-left: 20px;
-        gap: 30px;
-        border-right: none;
-        border-left: 1px solid var(--scroll-line);
-      }
+      justify-content: center;
+      flex-wrap: wrap;
+      max-width: 55rem;
+      gap: 1.3em;
+      padding: 2em;
 
       .element {
-        font-size: clamp(1.5rem, 1.4386rem + 0.2727vw, 1.875rem);
-        transform: translateX(100vw);
-        transition: 0.4s;
-        transition-delay: 0.3s;
+        display: inline-block;
+        background-color: transparent;
+        height: auto;
+        text-align: center;
+        position: relative;
+        font-size: clamp(1.725rem, 1.6143rem + 0.5536vw, 2.5rem);
+        font-weight: 700;
+        text-transform: uppercase;
+        border: 2px solid var(--text-content);
+        padding: 0.7em 2rem;
+        overflow: hidden;
+        cursor: pointer;
+        transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s all;
+
         &:hover {
-          animation: glitch 375ms infinite;
-          text-shadow: 1.5px 0.5px 0 rgba(255, 0, 0, 0.75),
-            -1.5px -0.5px 0 rgba(0, 255, 0, 0.75),
-            1.5px 0.5px 0 rgba(0, 0, 255, 0.75);
+          .main-element {
+            opacity: 0;
+          }
+          & > .ticker-element {
+            opacity: 1;
+          }
         }
-        @include desktop {
-          transform: translateX(-100vw);
+
+        .main-element {
+          letter-spacing: 0.2rem;
+          display: inline-block;
+          opacity: 1;
+          transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s all;
         }
-        &:nth-child(2) {
-          transition-delay: 0.4s;
-        }
-        &:nth-child(3) {
-          transition-delay: 0.5s;
-        }
-        &:nth-child(4) {
-          transition-delay: 0.6s;
-        }
-        &:nth-child(5) {
-          transition-delay: 0.7s;
-        }
-        &:nth-child(6) {
-          transition-delay: 0.8s;
-        }
-        &:nth-child(7) {
-          transition-delay: 0.9s;
-        }
-        &:nth-child(8) {
-          transition-delay: 1s;
-        }
-        &:nth-child(9) {
-          transition-delay: 1.1s;
-        }
-        &:nth-child(10) {
-          transition-delay: 1.2s;
-        }
-        &:nth-child(11) {
-          transition-delay: 1.3s;
-        }
-        &:nth-child(12) {
-          transition-delay: 1.4s;
-        }
-        &:nth-child(13) {
-          transition-delay: 1.5s;
-        }
-        &--show {
-          transform: translateX(0);
+
+        .ticker-element {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          pointer-events: none;
+          opacity: 0;
+          transition: cubic-bezier(0.215, 0.61, 0.355, 1) 0.4s all;
+
+          .ticker-element-inner {
+            width: fit-content;
+            display: flex;
+            position: relative;
+
+            .replica {
+              text-align: center;
+              white-space: nowrap;
+              padding: 0.7em 2rem;
+              letter-spacing: 0.2rem;
+              animation: ticker 1000ms linear infinite;
+            }
+          }
         }
       }
     }

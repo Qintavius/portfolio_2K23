@@ -1,7 +1,13 @@
 import React from "react";
-import "./Career.scss";
-import IcebergTop from "../img/iceberg-top.svg";
 import { useInView } from "react-intersection-observer";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faBriefcase } from "@fortawesome/free-solid-svg-icons";
+
+import Line from "../components/Line";
+
+import "./Career.scss";
+
+import IcebergTop from "../img/iceberg-top.svg";
 
 const Career = () => {
   const { ref, inView } = useInView({
@@ -16,6 +22,7 @@ const Career = () => {
         inView ? "wrapper career wrapper career--show" : "wrapper career"
       }
     >
+      <Line icon={<FontAwesomeIcon icon={faBriefcase} />} />
       <h2 aria-label="mes formations">Formations</h2>
       <div
         className={
@@ -40,7 +47,7 @@ const Career = () => {
           </p>
           <p className="text">Diplôme obtenu en Novembre 2022</p>
         </div>
-        <span className={inView ? "line rt line rt--show" : "line rt"}></span>
+        <span className={inView ? "text-line rt text-line rt--show" : "text-line rt"}></span>
       </div>
 
       <div
@@ -66,7 +73,7 @@ const Career = () => {
           </p>
           <p className="text">Diplôme obtenu en mars 2022</p>
         </div>
-        <span className={inView ? "line lt line lt--show" : "line lt"}></span>
+        <span className={inView ? "text-line lt text-line lt--show" : "text-line lt"}></span>
       </div>
 
       <div
@@ -83,7 +90,7 @@ const Career = () => {
           <p className="date">1989 - ?</p>
           <p className="text">Vue.js / Figma / Firebase / Wordpress</p>
         </div>
-        <span className={inView ? "line rt line rt--show" : "line rt"}></span>
+        <span className={inView ? "text-line rt text-line rt--show" : "text-line rt"}></span>
       </div>
 
       <img className="iceberg-top" src={IcebergTop} alt="" aria-hidden="true" />

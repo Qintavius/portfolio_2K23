@@ -1,8 +1,14 @@
 import React from "react";
-import "./Skill.scss";
-import ScrollLine from "../components/ScrollLine";
-import IcebergDown from "../img/iceberg-down.svg";
 import { useInView } from "react-intersection-observer";
+import { faBook } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+
+import ScrollLine from "../components/ScrollLine";
+import Line from "../components/Line";
+
+import "./Skill.scss";
+
+import IcebergDown from "../img/iceberg-down.svg";
 
 const Skill = () => {
   const elements = [
@@ -11,14 +17,14 @@ const Skill = () => {
     "Sass",
     "JavaScript",
     "React",
-    "Vue.JS",
-    "Node.JS",
-    "Firebase",
-    "MongoDb",
     "Npm",
-    "InkScape",
+    "Node.JS",
+    "MongoDb",
+    "Firebase",
+    "GitHub",
+    "Vue.JS",
     "Figma",
-    "Git Bash",
+    "InkScape",
   ];
 
   const { ref, inView } = useInView({
@@ -31,8 +37,24 @@ const Skill = () => {
       ref={ref}
       className={inView ? "wrapper skill wrapper skill--show" : "wrapper skill"}
     >
+      <Line icon={<FontAwesomeIcon icon={faBook} />} />
       <h2 aria-label="mes compétences">Compétences</h2>
       <div className="deep-mask"></div>
+      <div className="word-mask">
+        <span aria-hidden="true">css</span>
+        <span aria-hidden="true">vue</span>
+        <span aria-hidden="true">npm</span>
+        <span aria-hidden="true">sass</span>
+        <span aria-hidden="true">html</span>
+        <span aria-hidden="true">figma</span>
+        <span aria-hidden="true">react</span>
+        <span aria-hidden="true">gitHub</span>
+        <span aria-hidden="true">nodejs</span>
+        <span aria-hidden="true">firebase</span>
+        <span aria-hidden="true">inkScape</span>
+        <span aria-hidden="true">mongoDb</span>
+        <span aria-hidden="true">javaScript</span>
+      </div>
       <img
         className="iceberg-down"
         src={IcebergDown}
@@ -40,17 +62,24 @@ const Skill = () => {
         aria-hidden="true"
       />
       <div className="content-list">
-        <ul>
+        <div className="list-container">
           {elements.map((element, index) => (
-            <li
-              key={index}
-              className={inView ? "element element--show" : "element"}
-              aria-label={element}
-            >
-              {element}
-            </li>
+            <div key={index} className="element" aria-label={element}>
+              <span className="main-element">{element}</span>
+
+              <div className="ticker-element">
+                <div className="ticker-element-inner">
+                  <span className="replica">{element}</span>
+                  <span className="replica">{element}</span>
+                  <span className="replica">{element}</span>
+                  <span className="replica">{element}</span>
+                  <span className="replica">{element}</span>
+                  <span className="replica">{element}</span>
+                </div>
+              </div>
+            </div>
           ))}
-        </ul>
+        </div>
       </div>
       <ScrollLine />
     </section>
