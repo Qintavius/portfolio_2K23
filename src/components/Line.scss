@@ -1,0 +1,49 @@
+@import "../styles/mixins.scss";
+
+.line {
+  display: none;
+  @include desktop {
+    display: flex;
+    position: absolute;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    gap: 4rem;
+    top: 0;
+    padding-top: 4rem;
+    right: 10rem;
+    z-index: 1;
+  }
+
+  .gradient-line {
+    @include desktop {
+      display: inline-block;
+      width: 3px;
+      height: 0;
+      background: linear-gradient(
+        rgba(255, 255, 255, 0),
+        #45c6ea,
+        #8bb0ff,
+        rgba(255, 255, 255, 0)
+      );
+      border-radius: 50px;
+      transform-origin: top;
+      transition: 2.5s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: 500ms;
+    }
+
+    &--show {
+      @include desktop {
+        height: 100vh;
+      }
+    }
+  }
+
+  i {
+    @include desktop {
+      font-size: 2.5rem;
+      filter: drop-shadow(0 0 7px #8bb0ff);
+      color: var(--text-content);
+    }
+  }
+}
