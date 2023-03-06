@@ -5,16 +5,25 @@
   margin: 0;
   padding: 0;
   list-style-type: none;
-  font-family: "VT323", monospace;
-  font-weight: 400;
 }
 
+//  Font import
+
+@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap");
+
 html {
-  background: var(--layout);
+  font-size: 60%;
+  -webkit-text-size-adjust: 100%;
+  min-width: 320px;
+  font-family: "Assistant", sans-serif;
+  color-scheme: dark light;
 }
 
 body {
+  background: var(--layout);
   overflow-x: hidden;
+  color: var(--text-content);
   &::-webkit-scrollbar {
     display: none;
   }
@@ -24,7 +33,7 @@ body {
   position: relative;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  z-index: 10;
+  z-index: 1;
 
   &::after {
     content: "";
@@ -77,38 +86,54 @@ body {
   flex-direction: column;
   justify-content: center;
   width: 100%;
-  height: 100svh;
-  color: var(--text-content);
+  height: max-content;
+  min-height: 100svh;
+  margin-inline: auto;
   overflow: hidden;
 
-  &:before,
-  &:after {
+  &:before {
     content: "";
     position: absolute;
-    left: -48px;
-    top: -8px;
+    left: 0px;
+    top: -4px;
     writing-mode: vertical-lr;
     text-orientation: mixed;
     text-transform: uppercase;
-    font-size: clamp(12.5rem, 10.4545rem + 9.0909vw, 25rem);
-    color: var(--layout-text);
-    z-index: -1;
-    transition: all 1s;
+    font-size: clamp(7.5rem, -17.517rem + 67.6254vw, 22.6rem);
+    font-family: "Inter", sans-serif;
+    font-weight: 900;
+    white-space: nowrap;
+    line-height: 70%;
+    color: var(--text-content);
+    opacity: 0.1;
+    filter: brightness(0.7);
+    z-index: -100;
+    transition: 1s;
 
     @include desktop {
-      display: flex;
-      align-items: center;
-      justify-content: center;
+      top: 3.7rem;
+      right: 15rem;
       left: initial;
-      top: initial;
-      width: 100%;
-      writing-mode: horizontal-tb;
+      border-right: 2px solid rgba(255, 255, 255, 0);
+      font-size: 3rem;
+      font-weight: 400;
+      line-height: 137%;
+      writing-mode: initial;
+      opacity: 1;
+      filter: brightness(1);
+      font-weight: 400;
+      z-index: 1;
     }
   }
 }
 
-// Sections titles for accessibility
+h1 {
+  font-size: clamp(3rem, 2.5357rem + 3.6652vw, 8.2rem);
+  font-weight: 700;
+  line-height: 1.15;
+}
 
+// Sections titles for accessibility
 h2 {
   position: absolute;
   visibility: hidden;
@@ -116,15 +141,7 @@ h2 {
   width: 0;
 }
 
-//  Font import
-
-// Monospace :
-// - regular 400
-
-@import url("https://fonts.googleapis.com/css2?family=VT323&display=swap");
-
 // Colors variables
-
 :root {
   --layout: #252525;
   --layout-body: rgb(0, 0, 0);
@@ -133,7 +150,7 @@ h2 {
   --layout-menu: rgb(32, 32, 32);
 
   --text-content: rgb(255, 255, 255);
-  --text-color: rgb(17, 153, 228);
+  --text-color: rgb(177, 223, 233);
   --text-menu: rgb(158, 158, 158);
 
   --more-color: #0c76a0;
@@ -171,18 +188,21 @@ a {
 
 // Animations
 
+// FLoating effect for bear
 @keyframes floating {
   50% {
     transform: translate(-3%, 5%);
   }
 }
 
+// Iceberg moving effect
 @keyframes iceberg {
   50% {
     transform: translate(3%, -1%);
   }
 }
 
+// Glitch shadow part text
 @keyframes glitch {
   0% {
     text-shadow: 2px 0px 0 rgba(255, 0, 0, 0), -2px -1px 0 rgba(0, 255, 0, 0),
@@ -214,6 +234,7 @@ a {
   }
 }
 
+// Glitch top side text
 @keyframes glitch-first {
   0% {
     transform: translate(0px, 0px);
@@ -237,6 +258,7 @@ a {
   }
 }
 
+// Glitch bottom side text
 @keyframes glitch-last {
   0% {
     transform: translate(0px, 0px);
@@ -261,6 +283,7 @@ a {
   }
 }
 
+// Grain background mask animation
 @keyframes grain {
   0% {
     transform: translate(0, 0);
@@ -294,5 +317,16 @@ a {
   }
   100% {
     transform: translate(0, 0);
+  }
+}
+
+// Text infinite ticker
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-100%);
   }
 }
