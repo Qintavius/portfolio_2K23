@@ -1,13 +1,10 @@
 @import "../styles/mixins.scss";
 
 .career {
-  justify-content: flex-start;
-  gap: 5rem;
-  padding: 5rem 0;
+  justify-content: center;
+  align-items: center;
 
   @include desktop {
-    justify-content: center;
-    align-items: center;
   }
 
   &::before {
@@ -29,211 +26,158 @@
     }
   }
 
-  .content {
+  .inner {
     display: flex;
     flex-direction: column;
-    position: relative;
+    width: 100%;
+    min-height: 75vh;
+    opacity: 0;
+    filter: blur(4px);
+    transition: all 0.55s ease;
     z-index: 1;
     @include desktop {
-      position: absolute;
-      bottom: 0px;
-      opacity: 0;
-      visibility: hidden;
-      width: 360px;
-      overflow: hidden;
-      transition: 0.5s;
-      z-index: 1;
-      &--show {
-        bottom: 150px;
-        opacity: 1;
-        visibility: visible;
-      }
+      max-width: 650px;
     }
 
-    .sub-container {
-      display: flex;
-      flex-direction: column;
-      padding: 0 30px;
-      gap: 4px;
-      opacity: 0;
-      transform: translateY(30px);
-      filter: blur(5px);
-      transition: 0.8s;
-      transition-delay: 0.4s;
-      &--show {
-        opacity: 1;
-        transform: translateY(0);
-        filter: blur(0);
-        z-index: 100;
-        @include desktop {
-          transform: translateY(0);
-        }
-      }
+    &--show {
+      opacity: 1;
+      filter: blur(0);
     }
 
-    .text-line {
+    .tab-list {
       display: flex;
       position: relative;
-      align-items: center;
-      height: 1.3px;
-      width: 60%;
-      margin-top: 20px;
-      background-color: var(--text-menu);
-      &::before {
-        content: "";
+      width: 100%;
+      border-bottom: 1px solid var(--menu-line);
+
+      button {
+        width: 100%;
+        height: 42px;
+        padding: 10px;
+        border: none;
+        background: none;
+        color: var(--text-menu);
+        font-family: "Assistant", sans-serif;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        &:hover {
+          color: var(--text-color);
+        }
+      }
+
+      .btn-tab--active {
+        color: var(--text-color);
+      }
+
+      #tab-indicator {
+        display: inline-block;
         position: absolute;
-        width: 7px;
-        height: 7px;
-        rotate: 45deg;
-        background-color: var(--text-menu);
+        left: 0;
+        bottom: -2px;
+        width: 0;
+        height: 3px;
+        border-radius: 50px;
+        background-color: var(--text-color);
+        transition: 0.2s ease-in-out;
       }
-      @include desktop {
-        display: none;
-      }
+    }
 
-      &.lt {
-        justify-content: end;
-        align-self: start;
-        transform: translateX(-100vw);
-        transition: all 0.6s;
-        &--show {
-          transform: translateX(0);
+    .content-wrapper {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      .content-block {
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        width: 100%;
+        height: 100%;
+        padding: 4rem 3rem;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: all 0.27s ease-in-out;
+
+        &--active {
+          opacity: 1;
+          z-index: 1;
+        }
+
+        h3 {
+          font-size: clamp(1.5rem, 1.4202rem + 0.4405vw, 1.97rem);
+          font-weight: 700;
+          line-height: 1.5;
+        }
+
+        .career-type {
+          font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
+          & span:nth-child(2),
+          & span:nth-child(3) {
+            color: var(--text-color);
+            font-weight: 700;
+          }
+        }
+
+        .date {
+          font-size: clamp(1.125rem, 1.0452rem + 0.4405vw, 1.75rem);
+          line-height: 1.8;
+        }
+
+        ul {
+          height: 100%;
+          display: flex;
+          flex-direction: column;
+          gap: 0.6rem;
+
+          li {
+            position: relative;
+            padding: 0 2rem;
+            font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
+            line-height: 1.6;
+            font-weight: 400;
+
+            &:before {
+              content: "\f0da";
+              position: absolute;
+              font-family: "fontAwesome";
+              font-size: 10px;
+              color: var(--text-color);
+              top: 0.7rem;
+              left: 0;
+            }
+          }
         }
       }
-
-      &.rt {
-        justify-content: start;
-        align-self: end;
-        transform: translateX(100vw);
-        transition: all 0.8s;
-        &--show {
-          transform: translateX(0);
-        }
-      }
-    }
-
-    h3 {
-      text-transform: uppercase;
-      font-size: clamp(1.5rem, 1.4202rem + 0.4405vw, 2.125rem);
-      font-weight: 700;
-    }
-
-    .date {
-      font-size: clamp(1.125rem, 1.0452rem + 0.4405vw, 1.75rem);
-      font-weight: 400;
-    }
-
-    .text {
-      font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
-      line-height: 1.6;
-      font-weight: 600;
     }
 
     .grad {
+      position: relative;
       font-size: clamp(1.375rem, 1.2952rem + 0.4405vw, 2rem);
       font-weight: 600;
-      text-transform: uppercase;
+      line-height: 1.8;
       animation: glitch 500ms infinite;
       text-shadow: 2px 1px 0 rgba(255, 0, 0, 0.75),
         -2px -1px 0 rgba(0, 255, 0, 0.75), 2px 1px 0 rgba(0, 0, 255, 0.75);
 
-      &--right {
-        position: relative;
-        & span {
-          position: absolute;
-          top: 0;
-          right: 0;
-          &:first-child {
-            animation: glitch 650ms infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-            transform: translate(-0.8px, -0.5px);
-            opacity: 0.8;
-          }
-          &:last-child {
-            animation: glitch 375ms infinite;
-            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-            transform: translate(0.8px, 0.5px);
-            opacity: 0.8;
-          }
+      & span {
+        position: absolute;
+        top: 0;
+        left: 0;
+        &:first-child {
+          animation: glitch 650ms infinite;
+          clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
+          transform: translate(-0.8px, -0.5px);
+          opacity: 0.8;
         }
-      }
-
-      &--left {
-        position: relative;
-        & span {
-          position: absolute;
-          top: 0;
-          left: 0;
-          &:first-child {
-            animation: glitch 650ms infinite;
-            clip-path: polygon(0 0, 100% 0, 100% 45%, 0 45%);
-            transform: translate(-0.8px, -0.5px);
-            opacity: 0.8;
-          }
-          &:last-child {
-            animation: glitch 375ms infinite;
-            clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
-            transform: translate(0.8px, 0.5px);
-            opacity: 0.8;
-          }
+        &:last-child {
+          animation: glitch 375ms infinite;
+          clip-path: polygon(0 60%, 100% 60%, 100% 100%, 0 100%);
+          transform: translate(0.8px, 0.5px);
+          opacity: 0.8;
         }
-      }
-    }
-
-    &.block-1 {
-      text-align: right;
-      @include desktop {
-        max-height: 440px;
-        height: 30%;
-        transform: translate(-20rem, -40rem);
-        border-right: 1.5px solid #fff;
-        & > .sub-container {
-          transform: translateY(0) translateX(100%);
-          &--show {
-            transform: translateY(0) translateX(0);
-          }
-        }
-      }
-      &::before {
-        right: -30px;
-      }
-    }
-
-    &.block-2 {
-      text-align: left;
-      @include desktop {
-        max-height: 485px;
-        height: 30%;
-        border-left: 1.5px solid #fff;
-        transform: translate(42rem, -24rem);
-        & > .sub-container {
-          transform: translateY(0) translateX(-100%);
-          &--show {
-            transform: translateY(0) translateX(0);
-          }
-        }
-      }
-      &::before {
-        left: -30px;
-      }
-    }
-
-    &.block-3 {
-      text-align: right;
-      @include desktop {
-        max-height: 290px;
-        height: 30%;
-        transform: translate(-42rem, -11rem);
-        border-right: 1.5px solid #fff;
-        & > .sub-container {
-          transform: translateY(0) translateX(100%);
-          &--show {
-            transform: translateY(0) translateX(0);
-          }
-        }
-      }
-      &::before {
-        right: -30px;
       }
     }
   }
@@ -250,9 +194,12 @@
     animation: iceberg 7s ease-in-out infinite;
     z-index: -1;
     @include desktop {
-      z-index: 1;
       width: 100%;
-      bottom: 13rem;
+      bottom: 6%;
+      filter: brightness(0.8);
+      left: 0;
+      right: 0;
+      margin: 0 auto;
     }
   }
 
@@ -262,14 +209,42 @@
     max-height: 650px;
     height: 50%;
     bottom: 0;
-    background: linear-gradient(
-      180deg,
-      rgba(0, 0, 0, 0) 40%,
-      #068cefcc 100%
-    );
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 40%, #068cefcc 100%);
     z-index: -1;
     @include desktop {
       height: 100%;
     }
+  }
+}
+
+// Glitch shadow part text
+@keyframes glitch {
+  0% {
+    text-shadow: 2px 0px 0 rgba(255, 0, 0, 0), -2px -1px 0 rgba(0, 255, 0, 0),
+      -1px 2px 0 rgba(0, 0, 255, 0);
+  }
+  14% {
+    text-shadow: 2px 0px 0 rgba(255, 0, 0, 0.75),
+      -2px -1px 0 rgba(0, 255, 0, 0.75), -1px 2px 0 rgba(0, 0, 255, 0.75);
+  }
+  15% {
+    text-shadow: -2px -1px 0 rgba(255, 0, 0, 0.75),
+      1px 1px 0 rgba(0, 255, 0, 0.75), -2px -2px 0 rgba(0, 0, 255, 0.75);
+  }
+  49% {
+    text-shadow: -2px -1px 0 rgba(255, 0, 0, 0.75),
+      1px 1px 0 rgba(0, 255, 0, 0.75), -2px -2px 0 rgba(0, 0, 255, 0.75);
+  }
+  50% {
+    text-shadow: 1px 2px 0 rgba(255, 0, 0, 0.75),
+      2px 0px 0 rgba(0, 255, 0, 0.75), 0px -2px 0 rgba(0, 0, 255, 0.75);
+  }
+  99% {
+    text-shadow: 1px 2px 0 rgba(255, 0, 0, 0.75),
+      2px 0px 0 rgba(0, 255, 0, 0.75), 0px -2px 0 rgba(0, 0, 255, 0.75);
+  }
+  100% {
+    text-shadow: 0px 0px 0 rgba(255, 0, 0, 0), -0px -0px 0 rgba(0, 255, 0, 0),
+      0px 0px 0 rgbrgba(0, 0, 255, 0);
   }
 }

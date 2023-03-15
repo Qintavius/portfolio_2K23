@@ -1,14 +1,12 @@
-import React from "react";
+import React, { Suspense } from "react";
+import "./Skill.scss";
 import { useInView } from "react-intersection-observer";
 import { faBook } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
-import ScrollLine from "../components/ScrollLine";
-import Line from "../components/Line";
-
-import "./Skill.scss";
-
 import IcebergDown from "../img/iceberg-down.svg";
+
+const Line = React.lazy(() => import("../components/Line"));
 
 const Skill = () => {
   const elements = [
@@ -37,7 +35,9 @@ const Skill = () => {
       ref={ref}
       className={inView ? "wrapper skill wrapper skill--show" : "wrapper skill"}
     >
-      <Line icon={<FontAwesomeIcon icon={faBook} />} />
+      <Suspense>
+        <Line icon={<FontAwesomeIcon icon={faBook} />} />
+      </Suspense>
       <h2 aria-label="mes compétences">Compétences</h2>
       <div className="deep-mask"></div>
       <div className="word-mask">
@@ -65,7 +65,13 @@ const Skill = () => {
         <div className="list-container">
           {elements.map((element, index) => (
             <div key={index} className="element" aria-label={element}>
-              <span className="main-element">{element}</span>
+              <span
+                className={
+                  inView ? "main-element main-element--show" : "main-element"
+                }
+              >
+                {element}
+              </span>
 
               <div className="ticker-element">
                 <div className="ticker-element-inner">
@@ -81,7 +87,6 @@ const Skill = () => {
           ))}
         </div>
       </div>
-      <ScrollLine />
     </section>
   );
 };

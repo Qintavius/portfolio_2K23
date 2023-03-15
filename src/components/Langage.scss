@@ -1,73 +1,31 @@
+@import "../styles/mixins.scss";
+
 .flag {
-  position: relative;
+  position: fixed;
   display: flex;
   justify-content: center;
-  align-items: center;
-  width: 100%;
-
-  .hoverbox {
-    position: absolute;
-    padding: 10px;
-    color: var(--text-content);
-    background-color: black;
-    border-radius: 10px;
-    font-size: 2rem;
-    transform: translateY(-2.5em);
-    opacity: 0;
-    transition: 1s;
-    z-index: 0;
-    &:before {
-      content: "";
-      position: absolute;
-      left: 50%;
-      top: 100%;
-      transform: translateX(-50%);
-      border: 15px solid;
-      border-color: #000 #0000 #0000 #0000;
-    }
-  }
-
-  .lang-btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 30px;
-    height: 30px;
-    border-radius: 100%;
-    overflow: hidden;
-    z-index: 10;
-    &:hover ~ .hoverbox {
-      transform: translateY(-4em);
-      opacity: 1;
-    }
+  gap: 1rem;
+  width: 120px;
+  left: -30px;
+  bottom: 20px;
+  transform: rotate(45deg);
+  background-color: black;
+  z-index: 1;
+  @include desktop {
+    width: fit-content;
+    left: 55px;
+    bottom: 55px;
+    background-color: transparent;
+    transform: rotate(0);
   }
 
   a {
-    width: 100%;
-    height: 100%;
-    background-image: url("../img/uk.jpg");
-    background-size: 135%;
-    background-repeat: no-repeat;
-    background-position: center center;
-    &:hover {
-      animation: shake 0.15s forwards 3;
-    }
-  }
-}
+    font-size: 1.7rem;
+    text-transform: uppercase;
+    color: rgba(128, 126, 126, 0.863);
 
-@keyframes shake {
-  0% {
-    transform: translateX(0);
-  }
-  25% {
-    transform: translateX(-3px);
-    filter: blur(1px);
-  }
-  75% {
-    transform: translateX(3px);
-    filter: blur(1px);
-  }
-  100% {
-    transform: translateX(0);
+    &:hover {
+      color: var(--text-content);
+    }
   }
 }

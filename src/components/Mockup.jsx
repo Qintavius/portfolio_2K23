@@ -2,25 +2,29 @@ import React from "react";
 import Tags from "./Tags";
 import "./Mockup.scss";
 import "../styles/style.scss";
-import phone from "../img/phone-mockup.png";
-import laptop from "../img/laptop-mockup.png";
 
 const Mockup = ({ item, modal, closeModal }) => {
-  const description = item.description;
-  const picturePhone = item.pictures[0];
-  const pictureLaptop = item.pictures[1];
+  const title = item.title;
+  const type = item.type;
+  const receiver = item.receiver;
+  const descriptions = item.description;
+  const phone = item.mobile;
   const website = item.website;
   const repository = item.repository;
 
   return (
     <div className={modal ? "container container--open" : "container"}>
       <div className="modal">
-        <div className="modal-nav">
+        <div className="modal-header">
+          <h3>{title}</h3>
           <div className="close" onClick={closeModal}></div>
-          <div className="nav-tab">
+        </div>
+
+        <div className="modal-content">
+          <div className="button-wrapper">
             <button className="more">
               <a href={website} target="_blank">
-                En voir plus...
+                Aller sur le site
               </a>
             </button>
             <button className="repository">
@@ -30,20 +34,35 @@ const Mockup = ({ item, modal, closeModal }) => {
               </a>
             </button>
           </div>
-        </div>
-        <p className="description">{description}</p>
-        <Tags stack={item.stack} />
-        <div className="phone">
-          <img src={phone} alt="" />
-          <div className="screen">
-            <img className="phone-app" src={picturePhone} alt="" />
-          </div>
-        </div>
 
-        <div className="laptop">
-          <img src={laptop} alt="" />
-          <div className="screen-laptop">
-            <img className="laptop-app" src={pictureLaptop} alt="" />
+          <div className="hardware">
+            <div className="phone">
+              <div className="screen">
+                <img className="screenshot" src={phone} loading="lazy" alt="" />
+              </div>
+            </div>
+          </div>
+
+          <div className="textual">
+            <div className="type">
+              <h4>Type de projet</h4>
+              <p>{type}</p>
+              <p>{receiver}</p>
+            </div>
+
+            <div className="description">
+              <h4>Description</h4>
+              <ul>
+                {descriptions.map((text, index) => (
+                  <li key={index}>{text}</li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="stack">
+              <h4>Stack</h4>
+              <Tags stack={item.stack} />
+            </div>
           </div>
         </div>
       </div>

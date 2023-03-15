@@ -1,6 +1,8 @@
-import React, { useEffect, useRef, useState } from "react";
-import Mockup from "./Mockup";
+import React, { Suspense, useEffect, useRef, useState } from "react";
 import "./Item.scss";
+import { useInView } from "react-intersection-observer";
+
+const Mockup = React.lazy(() => import("./Mockup"));
 
 const Item = (props) => {
   const [modalOpen, setModalOpen] = useState(false);
@@ -25,10 +27,15 @@ const Item = (props) => {
     setModalOpen(!modalOpen);
   };
 
+  const { ref, inView } = useInView({
+    threshold: 1,
+  });
+
   return (
     <div className="item" ref={itemRef}>
       <div
-        className="item-title"
+        ref={ref}
+        className={inView ? "item-title item-title--show" : "item-title"}
         onClick={() => {
           setModalOpen(!modalOpen);
         }}
@@ -37,12 +44,23 @@ const Item = (props) => {
       >
         {props.item.title}
       </div>
-      <Mockup
-        key={props.item.title}
-        item={props.item}
-        modal={modalOpen}
-        closeModal={toggle}
-      />
+      <img className="preview" src={props.item.picture} loading="lazy" alt="" />
+
+      <div
+        className={
+          modalOpen
+            ? "container-drawer container-drawer--open"
+            : "container-drawer"
+        }
+      ></div>
+      <Suspense>
+        <Mockup
+          key={props.item.title}
+          item={props.item}
+          modal={modalOpen}
+          closeModal={toggle}
+        />
+      </Suspense>
     </div>
   );
 };

@@ -1,6 +1,7 @@
+import { faGithub } from "@fortawesome/free-brands-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { useEffect, useRef, useState } from "react";
 import { Link } from "react-scroll";
-import Langage from "./Langage";
 import "./Nav.scss";
 
 const Nav = () => {
@@ -63,8 +64,6 @@ const Nav = () => {
           </div>
         </div>
 
-        <Langage />
-
         <ul className="nav-tab">
           <li>
             <Link
@@ -76,7 +75,7 @@ const Nav = () => {
               aria-label="Aller sur à propos"
               tabIndex={0}
             >
-              à propos
+              à propos,
             </Link>
           </li>
 
@@ -90,7 +89,7 @@ const Nav = () => {
               aria-label="Aller sur parcours"
               tabIndex={0}
             >
-              Parcours
+              Parcours,
             </Link>
           </li>
 
@@ -104,7 +103,7 @@ const Nav = () => {
               aria-label="Aller sur compétences"
               tabIndex={0}
             >
-              Compétences
+              Compétences,
             </Link>
           </li>
 
@@ -118,28 +117,18 @@ const Nav = () => {
               aria-label="Aller sur projets"
               tabIndex={0}
             >
-              Projets
+              Projets.
             </Link>
           </li>
         </ul>
-        <div className="social">
-          <a
-            className="mail"
-            href="mailto:qtzaba@gmail.com"
-            target="_blank"
-            tabIndex={0}
-            aria-label="contactez moi par email"
-          >
-            <i className="fa-solid fa-at"></i>
-          </a>
-          <a
-            className="linkedin"
-            href="https://www.linkedin.com/in/quentin-z4b4"
-            target="_blank"
-            aria-label="contactez moi sur linkedin"
-          >
-            <i className="fa-brands fa-linkedin"></i>
-          </a>
+
+        <div id="repository">
+          <button>
+            <a href="https://github.com/Qintavius" target={"_blank"}>
+              <FontAwesomeIcon icon={faGithub} />
+              <span>Mon dépot GitHub.</span>
+            </a>
+          </button>
         </div>
       </div>
     </nav>

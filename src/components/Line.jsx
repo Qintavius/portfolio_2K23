@@ -4,13 +4,17 @@ import "./Line.scss";
 
 const Line = (props) => {
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
   });
 
   return (
     <div ref={ref} className="line">
       <i>{props.icon}</i>
-      <span className={inView ? "gradient-line gradient-line--show" : "gradient-line"}></span>
+      <span
+        className={
+          inView ? "gradient-line gradient-line--show" : "gradient-line"
+        }
+      ></span>
     </div>
   );
 };

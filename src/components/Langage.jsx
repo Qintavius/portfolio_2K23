@@ -4,10 +4,8 @@ import "./Langage.scss";
 const Langage = () => {
   return (
     <div className="flag">
-      <span className="lang-btn">
-        <a href="https://en.quentinquintavius.com/"></a>
-      </span>
-      <span className="hoverbox">Speak english ?</span>
+        <a href="https://en.quentinquintavius.com/">en.</a>
+        <a href="https://fr.quentinquintavius.com/">fr.</a>
     </div>
   );
 };

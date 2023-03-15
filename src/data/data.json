@@ -1,23 +1,30 @@
 [
     {
         "title": "Booki",
+        "type": "Projet réalisé dans le cadre de ma formation.",
+        "receiver": "Booki est une entreprise fictive de location d'hébergements de vacances.",
         "stack" : [
             "Html",
             "Css",
+            "Flexbox",
             "Responsive",
             "W3C",
             "GitHub"
         ],
-        "description" : "Intégration d'une maquette avec HTML et CSS seulement.",
-        "pictures" : [
-            "./img/booki.jpg",
-            "./img/booki-laptop.jpg"
+        "description" : [
+            "Intégration d'une maquette avec HTML et CSS seulement.",
+            "J'ai utilisé flexbox pour gérer le comportement des cartes et le responsive.",
+            "Les effets de survol ont été créé pour donner à la page un aspect moins figé."
         ],
+        "picture" : "./img/booki-pre.webp",
+        "mobile" : "./img/booki.webp",
         "repository" : "https://github.com/Qintavius/booki",
         "website" : "https://qintavius.github.io/booki/"
     },
     {
         "title": "Ohmyfood",
+        "type": "Projet réalisé dans le cadre de ma formation.",
+        "receiver": "Ohmyfood est une plateforme fictive de commande de plats à emporter pour les restaurants.",
         "stack" : [
             "Figma",
             "Html",
@@ -26,16 +33,16 @@
             "W3C",
             "GitHub"
         ],
-        "description" : "Réédition d'une maquette sous format jpeg avec Figma pour réliser un prototypage de l'application avant intégration.",
-        "pictures" : [
-            "./img/ohmyfood.jpg",
-            "./img/ohmyfood-laptop.jpg"
-        ],
+        "description" : ["J'ai édité la maquette fournit sous format jpeg avec Figma pour réaliser un prototypage de l'application sur 3 tailles de supports différents avant intégration, le framework SASS est utilisé puis minifier."],
+        "picture" : "./img/ohmyfood-pre.webp",
+        "mobile" : "./img/ohmyfood.webp",
         "repository" : "https://github.com/Qintavius/ohmyfood",
         "website" : "https://qintavius.github.io/ohmyfood/"
     },
     {
         "title": "La panthère",
+        "type": "Projet réalisé dans le cadre de ma formation.",
+        "receiver": "La panthère est une agence web fictive basé à Lyon.",
         "stack" : [
             "Bootstrap",
             "Javascript",
@@ -44,37 +51,16 @@
             "W3C",
             "GitHub"
         ],
-        "description" : "Audit du site d'une agence de web design puis optimisation du S.E.O et de l'accessibilité pour améliorer le référencement.",
-        "pictures" : [
-            "./img/panthere.jpg",
-            "./img/panthere-laptop.jpg"
-        ],
+        "description" : ["Audit du site d'une agence de web design pour optimisation du S.E.O et de l'accessibilité pour améliorer le référencement. Le projet utilise Bootstrap, et est fourni telle quelle, pas de modification CSS apporté en dehors des corrections de contraste entre le texte et le fond, ainsi que les optimisations de performance."],
+        "picture" : "./img/panthere-pre.webp",
+        "mobile" : "./img/panthere.webp",
         "repository" : "https://github.com/Qintavius/la-panthere",
         "website" : "https://qintavius.github.io/la-panthere"
     },
     {
-        "title": "Kanap",
-        "stack" : [
-            "Node",
-            "Npm",
-            "API",
-            "Javascript",
-            "Html",
-            "Css",
-            "W3C",
-            "Responsive",
-            "GitHub"
-        ],
-        "description" : "Intégration d'une maquette d'un site dynamique de e-commerce avec Javascript.",
-        "pictures" : [
-            "./img/kanap.jpg",
-            "./img/kanap-laptop.jpg"
-        ],
-        "repository" : "https://github.com/Qintavius/kanap",
-        "website" : "https://github.com/Qintavius/kanap"
-    },
-    {
         "title": "Kasa",
+        "type": "Projet réalisé dans le cadre de ma formation.",
+        "receiver": "Kasa est une plateforme fictive de location d'appartements entre particuliers.",
         "stack" : [
             "Node",
             "Npm",
@@ -86,33 +72,16 @@
             "W3C",
             "GitHub"
         ],
-        "description" : "Intégration d'une application web de location immobilière avec React JS.",
-        "pictures" : [
-            "./img/kasa.jpg",
-            "./img/kasa-laptop.jpg"
-        ],
+        "description" : ["Intégration d'une application web de location immobilière avec React JS, maquette fournit sous Figma. (Hébergement sur GitPages, cliquer sur l'onglet 'accueil' une fois sur le site)"],
+        "picture" : "./img/kasa-pre.webp",
+        "mobile" : "./img/kasa.webp",
         "repository" : "https://github.com/Qintavius/kasa",
         "website" : "https://qintavius.github.io/kasa"
     },
     {
-        "title": "Portfolio",
-        "stack" : [
-            "React",
-            "Sass",
-            "Npm",
-            "Figma",
-            "GitHub"
-        ],
-        "description" : "La maquette a été réalisée avec Figma, et les illustrations avec InkScape. Intersection-observer est utilisé pour les animations au défilement.",
-        "pictures" : [
-            "./img/portfolio.jpg",
-            "./img/portfolio-laptop.jpg"
-        ],
-        "repository" : "https://github.com/Qintavius/portfolio_2K23",
-        "website" : ""
-    },
-    {
         "title": "BleaTalk",
+        "type": "Projet personnel.",
+        "receiver": "Bleatalk n'est pas une application fictive mais une PWA de chat privé, créé pour améliorer mes skills sur react et firebase.",
         "stack" : [
             "Figma",
             "React JS",
@@ -123,11 +92,12 @@
             "PWA",
             "Github"
         ],
-        "description" : "Création d'une PWA de chat privé réalisé avec React JS pour le front et Firebase pour la partie back-end.",
-        "pictures" : [
-            "./img/bleatalk.jpg",
-            "./img/bleatalk-laptop.jpg"
+        "description" : [
+            "Création d'une PWA de chat privé développé avec React JS, SASS et Firebase.",
+            "Pour utiliser l'application enregistrez-vous d'abord, pour un usage optimisé installer l'app sur votre smartphone en allant dans le menu de votre navigateur (les 3 petits points 😁) puis \"Installer l'application\"."
         ],
+        "picture" : "./img/bleatalk-pre.webp",
+        "mobile" : "./img/bleatalk.webp",
         "repository" : "https://github.com/Qintavius/bleatalk",
         "website" : "https://bleatalk.quentinquintavius.com/"
     }

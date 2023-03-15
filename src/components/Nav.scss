@@ -3,16 +3,20 @@
 .nav-bar {
   display: flex;
   position: fixed;
-  top: 0;
-  left: 0;
-  height: 100lvh;
+  bottom: 0px;
+  right: 0;
+  height: 100dvh;
   background-color: var(--layout-menu);
   overflow: hidden;
   z-index: 10;
+  @include desktop {
+    right: initial;
+  }
+
   &::before {
     content: "";
     position: absolute;
-    background-image: url(../img/noise.jpg);
+    background-image: url(../img/noise.webp);
     width: 300%;
     height: 300%;
     left: -50%;
@@ -27,32 +31,20 @@
     justify-content: center;
     align-items: center;
     top: 20px;
-    left: 20px;
+    right: 20px;
     padding: 30px;
-    border-radius: 50%;
     backdrop-filter: blur(4px);
     overflow: hidden;
     opacity: 1;
+    transform: rotate(-45deg);
     transition: 0.4s linear 0.1s;
     cursor: pointer;
+    @include desktop {
+      left: 40px;
+      top: 40px;
+      right: initial;
+    }
 
-    &::before {
-      content: "";
-      position: absolute;
-      width: 0%;
-      height: 0%;
-      left: 50%;
-      top: 50%;
-      background-color: rgba(110, 110, 112, 0.267);
-      border-radius: 50%;
-      transition: 0.25s linear;
-    }
-    &:hover:before {
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-    }
     &--hidden {
       opacity: 0;
     }
@@ -111,12 +103,16 @@
 
       .ham-line {
         position: absolute;
-        left: 0;
+        right: 0;
         top: 14px;
         height: 3px;
         width: 24px;
         background-color: var(--text-content);
         transition: 0.25s ease-in-out 0.1s;
+        @include desktop {
+          left: 0;
+          right: initial;
+        }
         &--active {
           transform: translateX(50px);
         }
@@ -129,7 +125,6 @@
     position: relative;
     flex-direction: column;
     align-items: center;
-    justify-content: space-evenly;
     width: 0;
     height: 100%;
     padding: 1.5rem 0;
@@ -148,18 +143,17 @@
     &--open {
       width: 100vw;
       & > .circle-container,
-      .nav-tab,
-      .social,
-      .flag {
+      .nav-tab {
         opacity: 1;
       }
 
       & > .menu-close {
+        opacity: 0;
         &:before {
-          transform: rotate(45deg);
+          transform: rotate(0deg);
         }
         &::after {
-          transform: rotate(-45deg);
+          transform: rotate(-90deg);
         }
       }
       @include desktop {
@@ -168,25 +162,27 @@
     }
 
     .menu-close {
-      position: absolute;
       display: flex;
       justify-content: center;
       align-items: center;
+      position: absolute;
       top: 30px;
-      left: 30px;
+      right: 30px;
       padding: 20px;
       background-color: transparent;
       border: none;
+      transform: rotate(-45deg);
       overflow: hidden;
+      opacity: 1;
       cursor: pointer;
-      transition: 0.15s linear;
+
       &:before {
         content: "";
         position: absolute;
         width: 100%;
         height: 3px;
         background-color: white;
-        transition: 0.5s;
+        transition: 0.5s ease;
       }
       &:after {
         content: "";
@@ -194,7 +190,7 @@
         width: 100%;
         height: 3px;
         background-color: white;
-        transition: 0.5s;
+        transition: 0.5s ease;
       }
       @include desktop {
         display: none;
@@ -207,6 +203,7 @@
       align-items: center;
       height: 160px;
       width: 160px;
+      margin-top: 5rem;
 
       .circle {
         width: 150px;
@@ -230,85 +227,121 @@
       }
     }
 
-    ul {
+    .nav-tab {
       display: flex;
       flex-direction: column;
       justify-content: center;
+      height: 50%;
       width: 100%;
+      @include desktop {
+        width: auto;
+      }
+      & li:nth-child(1) a::before {
+        background-color: var(--mail-color);
+      }
+      & li:nth-child(2) a::before {
+        background-color: var(--text-color);
+      }
+      & li:nth-child(3) a::before {
+        background-color: var(--repo-color);
+      }
+      & li:nth-child(4) a::before {
+        background-color: var(--more-color);
+      }
 
       li {
-        position: relative;
+        display: flex;
+        justify-content: center;
         width: 100%;
-        height: clamp(6rem, 3.8571rem + 10.7143vw, 9rem);
-        border-top: 2px solid var(--menu-line);
+        height: 5rem;
         cursor: pointer;
-        &:nth-last-child(1) {
-          border-bottom: 2px solid var(--menu-line);
+        @include desktop {
+          justify-content: flex-start;
         }
+
         a {
           display: flex;
+          position: relative;
           align-items: center;
-          justify-content: center;
-          font-size: 1.8rem;
-          text-transform: uppercase;
-          white-space: nowrap;
-          width: 100%;
-          height: 100%;
-        }
-
-        &:before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          width: 0;
-          height: 100%;
-          background-color: var(--more-color);
-          z-index: -2;
-          transition: 0.3s ease;
-        }
-
-        &:hover {
+          font-size: 3rem;
+          font-weight: 700;
+          text-transform: capitalize;
+          letter-spacing: 0.2rem;
           color: var(--text-content);
+          white-space: nowrap;
+          width: fit-content;
+          height: 100%;
 
-          &::before {
-            width: 100%;
+          &:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 1rem;
+            top: 0.55rem;
+            bottom: 0;
+            left: -6px;
+            margin: auto;
+            z-index: -1;
+            transition: 400ms cubic-bezier(1, 0, 0, 1) 0ms;
+          }
+
+          &:hover {
+            &::before {
+              width: calc(100% + 12px);
+            }
           }
         }
       }
     }
+  }
 
-    .social {
-      display: flex;
-      justify-content: center;
-      gap: 30px;
-      width: 100%;
+  #repository {
+    button {
+      position: relative;
+      width: 190px;
+      height: 40px;
+      border: none;
+      background: black;
+      cursor: pointer;
+      z-index: 0;
 
-      a {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 5px;
+      &:before {
+        content: "";
+        position: absolute;
+        width: 40px;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background: white;
+        transition: 0.85s cubic-bezier(0.4, 0.55, 0, 1);
+        z-index: -1;
+      }
 
-        i {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 40px;
-          height: 40px;
-          font-size: 24px;
-          color: var(--text-content);
-          animation: glitch 425ms infinite;
+      span {
+        font-family: "Assistant", sans-serif;
+        font-size: 1.5rem;
+        font-weight: 500;
+        margin-left: 20px;
+        color: var(--text-content);
+        mix-blend-mode: difference;
+      }
 
-          @include desktop {
-            transition: 0.1s linear;
-            &:hover {
-              animation: none;
-              color: var(--text-color);
-            }
-          }
+      &:hover {
+        &:before {
+          width: 100%;
         }
+      }
+
+      svg {
+        position: absolute;
+        left: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto 10px;
+        width: 20px;
+        height: 20px;
+        color: black;
+        z-index: 1;
       }
     }
   }

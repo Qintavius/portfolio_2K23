@@ -5,6 +5,7 @@
   flex-wrap: wrap;
   height: fit-content;
   gap: 10px;
+  margin: 20px 0;
   @include desktop {
     align-self: center;
   }

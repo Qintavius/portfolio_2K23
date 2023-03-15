@@ -1,5 +1,77 @@
 @import "./mixins.scss";
 
+/* assistant-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/assistant-v18-latin-regular.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/assistant-v18-latin-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* assistant-500 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 500;
+  src: url("../fonts/assistant-v18-latin-500.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/assistant-v18-latin-500.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* assistant-600 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 600;
+  src: url("../fonts/assistant-v18-latin-600.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/assistant-v18-latin-600.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* assistant-700 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 700;
+  src: url("../fonts/assistant-v18-latin-700.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/assistant-v18-latin-700.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* assistant-800 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Assistant";
+  font-style: normal;
+  font-weight: 800;
+  src: url("../fonts/assistant-v18-latin-800.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/assistant-v18-latin-800.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
+/* inter-regular - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/inter-v12-latin-regular.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/inter-v12-latin-regular.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+/* inter-900 - latin */
+@font-face {
+  font-display: swap;
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 900;
+  src: url("../fonts/inter-v12-latin-900.woff2") format("woff2"),
+    /* Chrome 36+, Opera 23+, Firefox 39+ */
+      url("../fonts/inter-v12-latin-900.woff") format("woff"); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
@@ -7,88 +79,53 @@
   list-style-type: none;
 }
 
-//  Font import
-
-@import url("https://fonts.googleapis.com/css2?family=Assistant:wght@400;500;600;700&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;900&display=swap");
-
 html {
   font-size: 60%;
   -webkit-text-size-adjust: 100%;
   min-width: 320px;
-  font-family: "Assistant", sans-serif;
   color-scheme: dark light;
 }
 
 body {
-  background: var(--layout);
-  overflow-x: hidden;
+  font-family: "Assistant", sans-serif;
   color: var(--text-content);
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
-.page {
-  position: relative;
+.App {
+  overflow-x: hidden;
   -ms-overflow-style: none;
   scrollbar-width: none;
-  z-index: 1;
 
-  &::after {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  &::before {
     content: "";
-    background-image: url(../img/noise.jpg);
+    position: fixed;
+    background-image: url(../img/noise.webp);
     width: 300%;
     height: 300%;
     left: -50%;
     top: -100%;
     animation: grain 8s steps(10) infinite;
     opacity: 0.3;
-    position: fixed;
-    z-index: -1;
-  }
-
-  &::before {
-    content: "";
-    position: fixed;
-    width: 100%;
-    height: 100lvh;
-    background-image: radial-gradient(
-        transparent 65%,
-        rgba(0, 0, 0, 0.301) 100%
-      ),
-      radial-gradient(
-        ellipse,
-        rgba(0, 0, 0, 0.075) 50%,
-        rgba(0, 0, 0, 0.438) 100%
-      );
     z-index: 0;
-
-    @include desktop {
-      background-image: radial-gradient(
-          transparent 80%,
-          rgba(0, 0, 0, 0.301) 100%
-        ),
-        radial-gradient(
-          ellipse,
-          rgba(0, 0, 0, 0.075) 55%,
-          rgba(0, 0, 0, 0.438) 100%
-        );
-    }
   }
 }
 
 // Section wrapper
-
 .wrapper {
   display: flex;
   position: relative;
   flex-direction: column;
   justify-content: center;
-  width: 100%;
   height: max-content;
   min-height: 100svh;
-  margin-inline: auto;
+  width: 100%;
   overflow: hidden;
 
   &:before {
@@ -110,27 +147,25 @@ body {
     z-index: -100;
     transition: 1s;
 
+    @include tablet {
+      font-size: 12vh;
+    }
+
     @include desktop {
-      top: 3.7rem;
-      right: 15rem;
+      top: 53px;
+      right: 10rem;
       left: initial;
-      border-right: 2px solid rgba(255, 255, 255, 0);
-      font-size: 3rem;
+      font-size: 2.3rem;
       font-weight: 400;
-      line-height: 137%;
+      color: var(--text-menu);
+      text-transform: capitalize;
+      font-style: italic;
       writing-mode: initial;
       opacity: 1;
       filter: brightness(1);
-      font-weight: 400;
       z-index: 1;
     }
   }
-}
-
-h1 {
-  font-size: clamp(3rem, 2.5357rem + 3.6652vw, 8.2rem);
-  font-weight: 700;
-  line-height: 1.15;
 }
 
 // Sections titles for accessibility
@@ -150,17 +185,15 @@ h2 {
   --layout-menu: rgb(32, 32, 32);
 
   --text-content: rgb(255, 255, 255);
-  --text-color: rgb(177, 223, 233);
+  --text-color: rgb(143, 234, 255);
   --text-menu: rgb(158, 158, 158);
 
   --more-color: #0c76a0;
   --repo-color: #138f0e;
   --mail-color: #b4a23b;
 
-  --scroll-line: rgba(255, 255, 255, 0.637);
   --menu-line: rgb(48, 48, 48);
 
-  --water-surface-color: rgb(0, 0, 0);
   --water-surface-gradient: linear-gradient(
     180deg,
     rgba(0, 0, 0, 1) 0%,
@@ -187,101 +220,6 @@ a {
 }
 
 // Animations
-
-// FLoating effect for bear
-@keyframes floating {
-  50% {
-    transform: translate(-3%, 5%);
-  }
-}
-
-// Iceberg moving effect
-@keyframes iceberg {
-  50% {
-    transform: translate(3%, -1%);
-  }
-}
-
-// Glitch shadow part text
-@keyframes glitch {
-  0% {
-    text-shadow: 2px 0px 0 rgba(255, 0, 0, 0), -2px -1px 0 rgba(0, 255, 0, 0),
-      -1px 2px 0 rgba(0, 0, 255, 0);
-  }
-  14% {
-    text-shadow: 2px 0px 0 rgba(255, 0, 0, 0.75),
-      -2px -1px 0 rgba(0, 255, 0, 0.75), -1px 2px 0 rgba(0, 0, 255, 0.75);
-  }
-  15% {
-    text-shadow: -2px -1px 0 rgba(255, 0, 0, 0.75),
-      1px 1px 0 rgba(0, 255, 0, 0.75), -2px -2px 0 rgba(0, 0, 255, 0.75);
-  }
-  49% {
-    text-shadow: -2px -1px 0 rgba(255, 0, 0, 0.75),
-      1px 1px 0 rgba(0, 255, 0, 0.75), -2px -2px 0 rgba(0, 0, 255, 0.75);
-  }
-  50% {
-    text-shadow: 1px 2px 0 rgba(255, 0, 0, 0.75),
-      2px 0px 0 rgba(0, 255, 0, 0.75), 0px -2px 0 rgba(0, 0, 255, 0.75);
-  }
-  99% {
-    text-shadow: 1px 2px 0 rgba(255, 0, 0, 0.75),
-      2px 0px 0 rgba(0, 255, 0, 0.75), 0px -2px 0 rgba(0, 0, 255, 0.75);
-  }
-  100% {
-    text-shadow: 0px 0px 0 rgba(255, 0, 0, 0), -0px -0px 0 rgba(0, 255, 0, 0),
-      0px 0px 0 rgbrgba(0, 0, 255, 0);
-  }
-}
-
-// Glitch top side text
-@keyframes glitch-first {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  14% {
-    transform: translate(0px, -1px);
-  }
-  15% {
-    transform: translate(-1.5px, -0.5px);
-  }
-  49% {
-    transform: translate(-1.5px, -0.5px);
-  }
-  50% {
-    transform: translate(1.5px, 0px);
-  }
-  99% {
-    transform: translate(0px, 0px);
-  }
-  100% {
-  }
-}
-
-// Glitch bottom side text
-@keyframes glitch-last {
-  0% {
-    transform: translate(0px, 0px);
-  }
-  14% {
-    transform: translate(0px, 1px);
-  }
-  15% {
-    transform: translate(1.5px, 0.5px);
-  }
-  49% {
-    transform: translate(1.5px, 0.5px);
-  }
-  50% {
-    transform: translate(1.5px, 0.5px);
-  }
-  99% {
-    transform: translate(-1.5px, 0px);
-  }
-  100% {
-    transform: translate(0px, 0px);
-  }
-}
 
 // Grain background mask animation
 @keyframes grain {
@@ -317,16 +255,5 @@ a {
   }
   100% {
     transform: translate(0, 0);
-  }
-}
-
-// Text infinite ticker
-@keyframes ticker {
-  0% {
-    transform: translateX(0);
-  }
-
-  100% {
-    transform: translateX(-100%);
   }
 }

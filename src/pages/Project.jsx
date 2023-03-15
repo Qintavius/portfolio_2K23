@@ -1,14 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { Suspense, useEffect, useState } from "react";
+import "./Project.scss";
 import { useInView } from "react-intersection-observer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faFlask } from "@fortawesome/free-solid-svg-icons";
 
 import data from "../data/data.json";
 
-import Item from "../components/Item";
-import Line from "../components/Line";
-
-import "./Project.scss";
+const Item = React.lazy(() => import("../components/Item"));
+const Line = React.lazy(() => import("../components/Line"));
 
 const Project = () => {
   const [items, setItems] = useState(data);
@@ -18,29 +17,29 @@ const Project = () => {
   }, []);
 
   const { ref, inView } = useInView({
-    threshold: 0.5,
+    threshold: 0.2,
   });
 
   return (
     <section
-      id="projects"
       ref={ref}
+      id="projects"
       className={
         inView ? "wrapper project wrapper project--show" : "wrapper project"
       }
     >
-      <Line icon={<FontAwesomeIcon icon={faFlask} />} />
+      <Suspense>
+        <Line icon={<FontAwesomeIcon icon={faFlask} />} />
+      </Suspense>
       <h2 aria-label="mes projets">Projets</h2>
       <div className="deep-mask"></div>
       <div className="container-project">
-        <div
-          className={
-            inView ? "project-list project-list--show" : "project-list"
-          }
-        >
-          {items.map((item) => (
-            <Item key={item.title} item={item} />
-          ))}
+        <div className="project-list">
+          <Suspense>
+            {items.map((item) => (
+              <Item key={item.title} item={item} />
+            ))}
+          </Suspense>
         </div>
       </div>
     </section>

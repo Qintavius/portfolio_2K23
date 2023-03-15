@@ -13,34 +13,39 @@ const TextAnimation = () => {
 
   return (
     <div ref={ref} className="word-wrapper">
-      <div className="word-container">
-        <div className={inView ? "word-one word-one--show" : "word-one"}>
-          {wordArrayOne.map((letter, index) => (
-            <span className="word-letter" key={index}>
-              {letter === " " ? "\u00A0" : letter}
-            </span>
-          ))}
+      <h1 aria-label="Hello, je suis Quentin, développeur web.">
+        <div className="word-container">
+          <div className={inView ? "word-one word-one--show" : "word-one"}>
+            {wordArrayOne.map((letter, index) => (
+              <span className="word-letter" key={index}>
+                {letter === " " ? "\u00A0" : letter}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
-      <div className="word-container">
-        <div className={inView ? "word-two word-two--show" : "word-two"}>
-          {wordArrayTwo.map((letter, index) => (
-            <span className="word-letter" key={index}>
-              {letter === " " ? "\u00A0" : letter}
-            </span>
-          ))}
-        </div>
-      </div>
 
-      <div className="word-container">
-        <div className={inView ? "word-three word-three--show" : "word-three"}>
-          {wordArrayThree.map((letter, index) => (
-            <span className="word-letter" key={index}>
-              {letter === " " ? "\u00A0" : letter}
-            </span>
-          ))}
+        <div className="word-container">
+          <div className={inView ? "word-two word-two--show" : "word-two"}>
+            {wordArrayTwo.map((letter, index) => (
+              <span className="word-letter" key={index}>
+                {letter === " " ? "\u00A0" : letter}
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+
+        <div className="word-container">
+          <div
+            className={inView ? "word-three word-three--show" : "word-three"}
+          >
+            {wordArrayThree.map((letter, index) => (
+              <span className="word-letter" key={index}>
+                {letter === " " ? "\u00A0" : letter}
+              </span>
+            ))}
+          </div>
+        </div>
+      </h1>
     </div>
   );
 };
